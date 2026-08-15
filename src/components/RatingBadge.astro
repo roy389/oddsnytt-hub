@@ -7,11 +7,12 @@ interface Props {
 const { rating, size = 'md' } = Astro.props;
 
 const sizeClasses = size === 'sm' ? 'h-10 w-10 text-sm' : 'h-14 w-14 text-lg';
+const formatted = rating.toFixed(1).replace('.', ',');
 ---
 
 <span
   class={`inline-flex ${sizeClasses} items-center justify-center rounded-full bg-navy-950 font-bold text-signal`}
-  aria-label={`Vurdering: ${rating.toFixed(1)} av 10`}
+  aria-label={`Vurdering: ${formatted} av 10`}
 >
-  {rating.toFixed(1)}
+  {formatted}
 </span>
