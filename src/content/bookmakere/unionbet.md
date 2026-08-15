@@ -39,3 +39,14 @@ verified: false
 Spilltjenester rettet mot Norge uten norsk lisens omfattes av markedsføringsforbudet i norsk pengespillovgivning
 (håndheves av Lotteritilsynet). Vurder om dette bookmaker-samarbeidet er ønskelig før denne siden verifiseres og
 publiseres.
+
+## Operatørens egen beskrivelse (hentet fra union-bet-no.com, ikke verifisert)
+
+- Kombinert nettcasino, live casino og sportsbetting på én konto i NOK, med over 3 500 spill oppgitt.
+- Casinobonus oppgitt som no-sticky 100 % opptil €500 + 200 gratisspinn, med omsetningskrav opptil 40x.
+- Sportsbonus oppgitt som Free Bet: 500 kr innskudd gir 500 kr Free Bet, 1 000 kr gir 1 000 kr; minimumsodds 1,80, gyldighet opptil 14 dager, innsatsen returneres ikke.
+- Andre oppgitte kampanjer: Union Drops (ukentlige cash drops, 50 000 kr samlet pott), Win a Football Trip, Early Payout, Betslip Boost og forbedrede odds.
+- Nettstedet oppgir selv lisens fra Kahnawake Gaming Commission og **ingen** norsk spilltillatelse.
+
+Alle punktene over er operatørens egen markedsføring, gjengitt for kartlegging. Ingenting er kontrollert mot
+primærkilde, og ingen vurdering gis før verifisering er fullført.

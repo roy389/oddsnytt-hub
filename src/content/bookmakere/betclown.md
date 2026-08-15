@@ -39,3 +39,9 @@ verified: false
 Spilltjenester rettet mot Norge uten norsk lisens omfattes av markedsføringsforbudet i norsk pengespillovgivning
 (håndheves av Lotteritilsynet). Vurder om dette bookmaker-samarbeidet er ønskelig før denne siden verifiseres og
 publiseres.
+
+## Forsøk på å hente operatørtekst (mislykket)
+
+Henting av innhold fra betclown.com returnerte kun meldingen «Please enable JavaScript to continue using
+this application». Ingen produkt-, bonus- eller lisenstekst kunne hentes fra primærkilden. Beskrivelsen må
+derfor fylles inn manuelt av redaksjonen.
