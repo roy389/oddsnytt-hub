@@ -1,6 +1,10 @@
 ---
 name: "BetClown"
 slug: "betclown"
+logo: "/images/bookmakere/betclown.webp"
+logoAlt: "BetClown logo"
+logoTheme: "light"
+operatorSummary: "Ingen tekst kunne hentes fra betclown.com – nettstedet krever JavaScript og returnerer ingen lesbart innhold. Beskrivelse mangler derfor inntil innholdet kan hentes fra primærkilde."
 pros:
   - "[VERIFISER: fordeler er ikke kartlagt]"
 cons:
@@ -35,3 +39,9 @@ verified: false
 Spilltjenester rettet mot Norge uten norsk lisens omfattes av markedsføringsforbudet i norsk pengespillovgivning
 (håndheves av Lotteritilsynet). Vurder om dette bookmaker-samarbeidet er ønskelig før denne siden verifiseres og
 publiseres.
+
+## Forsøk på å hente operatørtekst (mislykket)
+
+Henting av innhold fra betclown.com returnerte kun meldingen «Please enable JavaScript to continue using
+this application». Ingen produkt-, bonus- eller lisenstekst kunne hentes fra primærkilden. Beskrivelsen må
+derfor fylles inn manuelt av redaksjonen.

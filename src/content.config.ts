@@ -51,6 +51,11 @@ const bookmakere = defineCollection({
     z.object({
       name: z.string(),
       slug: z.string(),
+      logo: z.string().optional(),
+      logoAlt: z.string().optional(),
+      logoTheme: z.enum(['light', 'dark']).default('light'),
+      // Operatørens egen beskrivelse (sitert fra offisielt nettsted, ikke redaksjonelt verifisert).
+      operatorSummary: z.string().optional(),
       // Unset (rather than a fabricated number/boolean) while verified: false;
       // required in practice once verified: true, enforced by editorial review, not the type.
       rating: z.number().min(1).max(10).multipleOf(0.1).optional(),

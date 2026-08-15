@@ -1,6 +1,10 @@
 ---
 name: "BetFriday"
 slug: "betfriday"
+logo: "/images/bookmakere/betfriday.webp"
+logoAlt: "BetFriday logo"
+logoTheme: "light"
+operatorSummary: "BetFriday presenterer seg som en dedikert norsk sportsbook fra teamet bak CasinoFriday, med odds på fotball, e-sport, tennis og ishockey, live betting og velkomstbonus oppgitt til 100 % opptil 5 000 kr på sport."
 pros:
   - "[VERIFISER: fordeler er ikke kartlagt]"
 cons:
@@ -36,3 +40,14 @@ verified: false
 Spilltjenester rettet mot Norge uten norsk lisens omfattes av markedsføringsforbudet i norsk pengespillovgivning
 (håndheves av Lotteritilsynet). Vurder om dette bookmaker-samarbeidet er ønskelig før denne siden verifiseres og
 publiseres.
+
+## Operatørens egen beskrivelse (hentet fra betfriday.net, ikke verifisert)
+
+- Presenteres som en dedikert norsk sportsbook fra teamet bak CasinoFriday.
+- Oppgitte velkomstbonuser: sport 100 % opptil 5 000 kr; casino og live casino 100 % opptil 5 000 kr + 200 gratisspinn.
+- Oppgitt sportsutvalg: fotball (Eliteserien, Premier League, La Liga, Serie A, Champions League), e-sport (CS2, LoL, Valorant, Rocket League, Fortnite), tennis (ATP/WTA, Grand Slam), ishockey (NHL, KHL, SHL, EHL), håndball, basketball, motorsport, sykling og vintersport.
+- Live betting oppgis som tilgjengelig.
+- Betaling: nettstedet oppgir «alle store kortleverandører», inkludert Visa og Mastercard.
+
+Alle punktene over er operatørens egen markedsføring, gjengitt for kartlegging. Ingenting er kontrollert mot
+primærkilde, og ingen vurdering gis før verifisering er fullført.
