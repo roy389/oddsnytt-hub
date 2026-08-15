@@ -13,16 +13,16 @@ interface Props {
 const { name, logo, logoAlt, logoTheme = 'light', operatorSummary, siteUrl } = Astro.props;
 ---
 
-<article class="flex flex-col gap-4 rounded-lg border border-navy-700/15 bg-white p-5 sm:flex-row">
+<article class="flex flex-col gap-4 rounded-lg border border-line/15 bg-card p-5 sm:flex-row">
   <BookmakerLogo src={logo} alt={logoAlt ?? `${name} logo`} theme={logoTheme} />
 
   <div class="flex-1">
-    <h3 class="text-lg font-bold text-navy-950">{name}</h3>
+    <h3 class="text-lg font-bold text-heading">{name}</h3>
     <p class="mt-1 text-xs font-semibold uppercase tracking-wide text-negative">
       Under redaksjonell gjennomgang – ikke verifisert
     </p>
-    {operatorSummary && <p class="mt-2 text-sm text-ink-dim">{operatorSummary}</p>}
-    <p class="mt-2 text-[11px] text-ink-dim/70">
+    {operatorSummary && <p class="mt-2 text-sm text-muted">{operatorSummary}</p>}
+    <p class="mt-2 text-[11px] text-muted/70">
       Teksten over er hentet fra operatørens eget nettsted ({new URL(siteUrl).hostname}) og er ikke
       kontrollert mot primærkilder. Ingen vurdering eller bonusanbefaling gis før omtalen er verifisert.
     </p>

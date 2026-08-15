@@ -13,7 +13,7 @@ const { src, alt, theme = 'light', class: className = '' } = Astro.props;
   src ? (
     <div
       class={`flex h-16 w-32 shrink-0 items-center justify-center overflow-hidden rounded border p-2 ${
-        theme === 'dark' ? 'border-navy-700/40 bg-navy-950' : 'border-navy-700/15 bg-white'
+        theme === 'dark' ? 'border-line/40 bg-inkwell' : 'border-line/15 bg-card'
       } ${className}`}
     >
       <img src={src} alt={alt} loading="lazy" decoding="async" class="max-h-full max-w-full object-contain" />

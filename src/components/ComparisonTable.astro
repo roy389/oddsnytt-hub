@@ -22,9 +22,9 @@ interface Props {
 const { bookmakers } = Astro.props;
 ---
 
-<div class="overflow-x-auto rounded-lg border border-navy-700/15">
-  <table class="w-full min-w-[640px] border-collapse bg-white text-left text-sm">
-    <thead class="bg-navy-950 text-paper">
+<div class="overflow-x-auto rounded-lg border border-line/15">
+  <table class="w-full min-w-[640px] border-collapse bg-card text-left text-sm">
+    <thead class="bg-inkwell text-paper">
       <tr>
         <th class="px-4 py-3 font-semibold">Bookmaker</th>
         <th class="px-4 py-3 font-semibold">Vurdering</th>
@@ -38,8 +38,8 @@ const { bookmakers } = Astro.props;
     <tbody>
       {
         bookmakers.map((bookmaker) => (
-          <tr class="border-t border-navy-700/10">
-            <td class="px-4 py-3 font-medium text-navy-950">
+          <tr class="border-t border-line/10">
+            <td class="px-4 py-3 font-medium text-heading">
               <div class="flex items-center gap-3">
                 <BookmakerLogo
                   src={bookmaker.logo}
@@ -55,8 +55,8 @@ const { bookmakers } = Astro.props;
             <td class="px-4 py-3">
               <RatingBadge rating={bookmaker.rating} size="sm" />
             </td>
-            <td class="px-4 py-3 text-ink-dim">{bookmaker.bonusHeadline}</td>
-            <td class="px-4 py-3 text-ink-dim">{bookmaker.minDeposit}</td>
+            <td class="px-4 py-3 text-muted">{bookmaker.bonusHeadline}</td>
+            <td class="px-4 py-3 text-muted">{bookmaker.minDeposit}</td>
             <td class="px-4 py-3 text-right">
               <a
                 href={bookmaker.affiliateUrl}
@@ -72,7 +72,7 @@ const { bookmakers } = Astro.props;
       }
     </tbody>
   </table>
-  <p class="border-t border-navy-700/10 bg-paper-dim px-4 py-2 text-[11px] uppercase tracking-wide text-ink-dim/70">
+  <p class="border-t border-line/10 bg-canvas-dim px-4 py-2 text-[11px] uppercase tracking-wide text-muted/70">
     Annonselenker
   </p>
 </div>

@@ -8,8 +8,8 @@ interface Props {
 const { authorName, authorField, date } = Astro.props;
 ---
 
-<p class="flex items-center gap-2 text-sm text-ink-dim">
-  <span class="font-semibold text-navy-950">{authorName}</span>
+<p class="flex items-center gap-2 text-sm text-muted">
+  <span class="font-semibold text-heading">{authorName}</span>
   <span aria-hidden="true">·</span>
   <span>{authorField}</span>
   <span aria-hidden="true">·</span>

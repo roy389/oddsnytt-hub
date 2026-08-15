@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-navy-950: #070b16;
   --color-navy-900: #0d1424;
@@ -11,6 +13,16 @@
   --color-paper-dim: #ececE7;
   --color-ink: #0b1220;
   --color-ink-dim: #4b5468;
+
+  /* Semantiske tokens – flippes i mørk modus */
+  --color-canvas: #f7f7f4;
+  --color-canvas-dim: #ececE7;
+  --color-card: #ffffff;
+  --color-body: #0b1220;
+  --color-muted: #4b5468;
+  --color-heading: #070b16;
+  --color-line: #1e2c4a;
+  --color-inkwell: #070b16;
 
   --color-signal: #f5a623;
   --color-signal-dark: #cf8a12;
@@ -24,20 +36,36 @@
     'Apple Color Emoji', 'Segoe UI Emoji';
 }
 
+:where(.dark) {
+  --color-canvas: #070b16;
+  --color-canvas-dim: #0d1424;
+  --color-card: #111a2c;
+  --color-body: #e7ecf5;
+  --color-muted: #a2adc3;
+  --color-heading: #f4f7fc;
+  --color-line: #8fa1c4;
+  --color-inkwell: #04070d;
+  --color-signal-dark: #ffc45c;
+}
+
 @layer base {
   html {
     color-scheme: light;
   }
 
+  html.dark {
+    color-scheme: dark;
+  }
+
   body {
-    @apply bg-paper text-ink font-sans antialiased;
+    @apply bg-canvas text-body font-sans antialiased;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-bold tracking-tight text-navy-950;
+    @apply font-bold tracking-tight text-heading;
   }
 
   a {
@@ -47,15 +75,15 @@
 
 @layer components {
   .content-body {
-    @apply space-y-4 leading-relaxed text-ink;
+    @apply space-y-4 leading-relaxed text-body;
   }
 
   .content-body h2 {
-    @apply mt-8 text-xl font-bold text-navy-950;
+    @apply mt-8 text-xl font-bold text-heading;
   }
 
   .content-body h3 {
-    @apply mt-6 text-lg font-bold text-navy-950;
+    @apply mt-6 text-lg font-bold text-heading;
   }
 
   .content-body a {

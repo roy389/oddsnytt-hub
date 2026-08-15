@@ -34,25 +34,25 @@ const comparisonRows = bookmakers.map((entry) => ({
 
 <Layout title={title} description={description}>
   <section class="mx-auto max-w-6xl px-4 py-16">
-    <h1 class="text-3xl font-bold text-navy-950">Bookmakeromtaler</h1>
-    <p class="mt-3 max-w-2xl text-ink-dim">
+    <h1 class="text-3xl font-bold text-heading">Bookmakeromtaler</h1>
+    <p class="mt-3 max-w-2xl text-muted">
       Vi tester og vurderer bookmakere ut fra odds, bonusbetingelser, betalingsløsninger og
       support. Alle fakta verifiseres før publisering.
     </p>
 
     {
       bookmakers.length === 0 ? (
-        <p class="mt-10 text-ink-dim">Ingen verifiserte bookmakeromtaler er publisert ennå.</p>
+        <p class="mt-10 text-muted">Ingen verifiserte bookmakeromtaler er publisert ennå.</p>
       ) : (
         <>
           <div class="mt-10">
-            <h2 class="text-lg font-bold text-navy-950">Rask sammenligning</h2>
+            <h2 class="text-lg font-bold text-heading">Rask sammenligning</h2>
             <div class="mt-4">
               <ComparisonTable bookmakers={comparisonRows} />
             </div>
           </div>
 
-          <h2 class="mt-12 text-lg font-bold text-navy-950">Anmeldelsene i detalj</h2>
+          <h2 class="mt-12 text-lg font-bold text-heading">Anmeldelsene i detalj</h2>
           <div class="mt-4 flex flex-col gap-4">
             {bookmakers.map((entry) => (
               <BookmakerCard
@@ -75,8 +75,8 @@ const comparisonRows = bookmakers.map((entry) => ({
     {
       drafts.length > 0 && (
         <div class="mt-16">
-          <h2 class="text-2xl font-bold text-navy-950">Bookmakere under gjennomgang</h2>
-          <p class="mt-2 max-w-2xl text-sm text-ink-dim">
+          <h2 class="text-2xl font-bold text-heading">Bookmakere under gjennomgang</h2>
+          <p class="mt-2 max-w-2xl text-sm text-muted">
             Disse operatørene er registrert hos oss, men omtalene er ikke ferdig verifisert. Vi viser
             logo og operatørens egen beskrivelse, uten vurdering, bonusanbefaling eller affiliatelenke.
           </p>
