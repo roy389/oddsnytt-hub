@@ -40,9 +40,17 @@ const { bookmakers } = Astro.props;
         bookmakers.map((bookmaker) => (
           <tr class="border-t border-navy-700/10">
             <td class="px-4 py-3 font-medium text-navy-950">
-              <a href={`/bookmakere/${bookmaker.slug}/`} class="hover:text-signal-dark">
-                {bookmaker.name}
-              </a>
+              <div class="flex items-center gap-3">
+                <BookmakerLogo
+                  src={bookmaker.logo}
+                  alt={bookmaker.logoAlt ?? `${bookmaker.name} logo`}
+                  theme={bookmaker.logoTheme ?? 'light'}
+                  class="h-10 w-20"
+                />
+                <a href={`/bookmakere/${bookmaker.slug}/`} class="hover:text-signal-dark">
+                  {bookmaker.name}
+                </a>
+              </div>
             </td>
             <td class="px-4 py-3">
               <RatingBadge rating={bookmaker.rating} size="sm" />
