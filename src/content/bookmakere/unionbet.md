@@ -1,6 +1,9 @@
 ---
 name: "UnionBet"
 slug: "unionbet"
+logo: "/images/bookmakere/unionbet.webp"
+logoAlt: "UnionBet logo"
+logoTheme: "dark"
 rating: 5.5
 norwegianSupport: false
 pros:

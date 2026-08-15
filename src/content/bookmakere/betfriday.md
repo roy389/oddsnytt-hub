@@ -1,6 +1,9 @@
 ---
 name: "BetFriday"
 slug: "betfriday"
+logo: "/images/bookmakere/betfriday.webp"
+logoAlt: "BetFriday logo"
+logoTheme: "light"
 rating: 6.0
 norwegianSupport: false
 pros:

@@ -1,6 +1,9 @@
 ---
 name: "BetClown"
 slug: "betclown"
+logo: "/images/bookmakere/betclown.webp"
+logoAlt: "BetClown logo"
+logoTheme: "light"
 pros:
   - "[VERIFISER: konkrete bonusvilkår og fordeler er ikke kartlagt utover lisensinfo]"
 cons:
