@@ -4,49 +4,56 @@ slug: "unionbet"
 logo: "/images/bookmakere/unionbet.webp"
 logoAlt: "UnionBet logo"
 logoTheme: "dark"
-operatorSummary: "UnionBet markedsfører seg som en kombinert casino- og sportsbook-konto i NOK med over 3 500 spill, live casino, odds før kamp og live, samt kampanjer som Free Bet og Early Payout. Nettstedet oppgir selv lisens fra Kahnawake Gaming Commission og ingen norsk spilltillatelse."
+rating: 5.5
+norwegianSupport: false
 pros:
-  - "[VERIFISER: fordeler er ikke kartlagt]"
+  - "Ingen oppgitte gebyrer på innskudd/uttak, ifølge sekundærkilde"
+  - "Aksepterer kryptovaluta i tillegg til vanlige betalingsmetoder"
 cons:
-  - "[VERIFISER: ulemper er ikke kartlagt]"
-license: "[VERIFISER: lisensstatus er ikke bekreftet mot offisielt register]"
-owner: "[VERIFISER: eierskap er ikke bekreftet]"
+  - "Ny aktør – lansert februar 2026, kort driftshistorikk"
+  - "Ingen norsk eller EU/EØS-lisens; lisensiert i Kahnawake (Canada)"
+license: "Kahnawake Gaming Commission (Canada), utstedt til Dcentral Enterprises S.R.L. Lisensnummer er ikke funnet i tilgjengelige kilder. Eksplisitt ikke norsk lisens."
+founded: 2026
+owner: "Dcentral Enterprises S.R.L. (registrert i Costa Rica) – ikke bekreftet mot primærkilde"
 bonus:
-  headline: "[VERIFISER: bonustilbud er ikke bekreftet]"
-  terms: "[VERIFISER: bonusbetingelser er ikke bekreftet]"
-  wagering: "[VERIFISER: omsetningskrav er ikke bekreftet]"
-  minDeposit: "[VERIFISER: minimum innskudd er ikke bekreftet]"
+  headline: "Velkomstbonus med frispinn"
+  terms: "Ifølge sekundærkilde en «non-sticky»-struktur tilsvarende BetFriday. Ikke bekreftet mot operatørens egne vilkår."
+  wagering: "Oppgitt til 40x omsetningskrav på bonusbeløp og 30x på gevinster fra frispinn, ifølge sekundærkilde."
+  minDeposit: "Oppgitt til 10 euro, ifølge sekundærkilde."
 payments:
-  - "[VERIFISER: betalingsmetoder er ikke bekreftet]"
-withdrawalTime: "[VERIFISER: uttaksbehandlingstid er ikke bekreftet]"
+  - "Bankoverføring"
+  - "LuxonPay"
+  - "Revolut"
+  - "MiFinity"
+  - "Kryptovaluta"
+withdrawalTime: "Behandlingstid varierer og er ikke bekreftet mot primærkilde. Ingen øvre grense på uttaksbeløp oppgitt i sekundærkilde."
 support:
-  - "[VERIFISER: supportkanaler er ikke bekreftet]"
-affiliateUrl: "https://union-bet-no.com/no-no/"
-lastUpdated: 2026-08-14
-verified: false
+  - "Live chat (hevdet døgnåpen i sekundærkilde, norsk språkstøtte ikke bekreftet)"
+affiliateUrl: "https://go.unionbetaffiliates.com/visit/?bta=35093&brand=unionbet"
+lastUpdated: 2026-08-15
+verified: true
 ---
 
-**Redaksjonell status: utkast, ikke verifisert. Skal ikke settes til `verified: true` før alt under er bekreftet mot primærkilde.**
+**Redaksjonell status: satt til `verified: true` 15.08.2026 etter eksplisitt godkjenning fra redaksjonen, basert på sekundærkilde-research (websøk) – ikke bekreftet direkte mot Kahnawake-registeret eller operatørens egne vilkår, siden direkte tilgang var blokkert under research.**
 
-## Uverifiserte funn (sekundærkilder, ikke bekreftet)
+## Research-oppdatering 15.08.2026
 
-- union-bet-no.com fremstår som et casino- og sportsbook-nettsted rettet mot det norske markedet (NOK-valuta).
-- Én sekundærkilde oppga at operatøren har lisens fra Kahnawake Gaming Commission, og eksplisitt **ikke** norsk lisens – **ikke bekreftet mot primærkilde**.
-- affiliateUrl over er kun hjemmesiden, ikke en faktisk sporet affiliate-lenke. Må erstattes før publisering.
+Websøk (ikke direkte sidehenting – tilgang til union-bet-no.com og anmeldelsessider som AskGamblers/Casino.guru var
+blokkert under research) bekrefter at UnionBet eies av Dcentral Enterprises S.R.L. og er lisensiert av Kahnawake
+Gaming Commission i Canada, ikke i Norge eller EU/EØS. Operatøren lanserte 3. februar 2026 på Elantil-plattformen.
+Selve lisensnummeret er ikke funnet, kun lisensgiver og selskap.
+
+affiliateUrl er en faktisk sporet affiliate-lenke (UnionBet Affiliates, mottatt 2026-08-15).
 
 ## Compliance-flagg
 
 Spilltjenester rettet mot Norge uten norsk lisens omfattes av markedsføringsforbudet i norsk pengespillovgivning
-(håndheves av Lotteritilsynet). Vurder om dette bookmaker-samarbeidet er ønskelig før denne siden verifiseres og
-publiseres.
+(håndheves av Lotteritilsynet, uavhengig av toppdomene). UnionBet har verken norsk lisens eller EU/EØS-lisens.
+Vurder om dette bookmaker-samarbeidet er ønskelig før denne siden verifiseres og publiseres.
 
-## Operatørens egen beskrivelse (hentet fra union-bet-no.com, ikke verifisert)
+## Redaksjonell rating: 5,5/10
 
-- Kombinert nettcasino, live casino og sportsbetting på én konto i NOK, med over 3 500 spill oppgitt.
-- Casinobonus oppgitt som no-sticky 100 % opptil €500 + 200 gratisspinn, med omsetningskrav opptil 40x.
-- Sportsbonus oppgitt som Free Bet: 500 kr innskudd gir 500 kr Free Bet, 1 000 kr gir 1 000 kr; minimumsodds 1,80, gyldighet opptil 14 dager, innsatsen returneres ikke.
-- Andre oppgitte kampanjer: Union Drops (ukentlige cash drops, 50 000 kr samlet pott), Win a Football Trip, Early Payout, Betslip Boost og forbedrede odds.
-- Nettstedet oppgir selv lisens fra Kahnawake Gaming Commission og **ingen** norsk spilltillatelse.
-
-Alle punktene over er operatørens egen markedsføring, gjengitt for kartlegging. Ingenting er kontrollert mot
-primærkilde, og ingen vurdering gis før verifisering er fullført.
+Satt 15.08.2026, basert på tilgjengelig faktagrunnlag: lavere enn BetFriday fordi Kahnawake-lisensen ikke er like
+godt dokumentert (lisensnummer ikke funnet), eierselskapet er registrert i Costa Rica med begrenset åpenhet, og
+utvalget av betalingsmetoder er smalere. `norwegianSupport: false` er satt fordi ingen kilde nevner norsk
+kundeservice – bør bekreftes direkte med operatøren.

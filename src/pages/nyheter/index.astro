@@ -34,7 +34,9 @@ const newsWithAuthors = await Promise.all(
               href={`/nyheter/${entry.id}/`}
               class="flex flex-col gap-2 rounded-lg border border-navy-700/15 bg-white p-5 shadow-sm hover:border-signal"
             >
-              <p class="text-xs font-semibold uppercase tracking-wide text-ink-dim">{entry.data.category}</p>
+              <span class="w-fit rounded-full bg-navy-950 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-signal">
+                {entry.data.category}
+              </span>
               <h2 class="text-lg font-bold text-navy-950">{entry.data.title}</h2>
               <p class="text-sm text-ink-dim">{entry.data.description}</p>
               {author && <p class="mt-auto text-xs text-ink-dim">{author.data.name}</p>}
