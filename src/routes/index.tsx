@@ -34,7 +34,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [lead, ...rest] = articles;
+  const lead = articles[0]!;
+  const rest = articles.slice(1);
 
   return (
     <div className="min-h-screen bg-background">
