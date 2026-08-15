@@ -46,10 +46,14 @@ const comparisonRows = bookmakers.map((entry) => ({
       ) : (
         <>
           <div class="mt-10">
-            <ComparisonTable bookmakers={comparisonRows} />
+            <h2 class="text-lg font-bold text-navy-950">Rask sammenligning</h2>
+            <div class="mt-4">
+              <ComparisonTable bookmakers={comparisonRows} />
+            </div>
           </div>
 
-          <div class="mt-10 flex flex-col gap-4">
+          <h2 class="mt-12 text-lg font-bold text-navy-950">Anmeldelsene i detalj</h2>
+          <div class="mt-4 flex flex-col gap-4">
             {bookmakers.map((entry) => (
               <BookmakerCard
                 name={entry.data.name}
