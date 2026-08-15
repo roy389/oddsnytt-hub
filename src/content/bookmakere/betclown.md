@@ -1,6 +1,10 @@
 ---
 name: "BetClown"
 slug: "betclown"
+logo: "/__l5e/assets-v1/f541286e-9589-4e95-ad0f-68a64d5acb6c/betclown-logo.png"
+logoAlt: "BetClown logo"
+logoTheme: "light"
+operatorSummary: "Ingen tekst kunne hentes fra betclown.com – nettstedet krever JavaScript og returnerer ingen lesbart innhold. Beskrivelse mangler derfor inntil innholdet kan hentes fra primærkilde."
 pros:
   - "[VERIFISER: fordeler er ikke kartlagt]"
 cons:
