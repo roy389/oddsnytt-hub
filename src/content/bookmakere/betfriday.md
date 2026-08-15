@@ -1,53 +1,65 @@
 ---
 name: "BetFriday"
 slug: "betfriday"
-logo: "/images/bookmakere/betfriday.webp"
-logoAlt: "BetFriday logo"
-logoTheme: "light"
-operatorSummary: "BetFriday presenterer seg som en dedikert norsk sportsbook fra teamet bak CasinoFriday, med odds på fotball, e-sport, tennis og ishockey, live betting og velkomstbonus oppgitt til 100 % opptil 5 000 kr på sport."
+rating: 6.0
+norwegianSupport: false
 pros:
-  - "[VERIFISER: fordeler er ikke kartlagt]"
+  - "«Non-sticky» bonusstruktur – eget innskudd og bonus holdes adskilt"
+  - "Bredt spekter betalingsmetoder, inkludert kryptovaluta"
 cons:
-  - "[VERIFISER: ulemper er ikke kartlagt]"
-license: "[VERIFISER: lisensstatus er ikke bekreftet mot offisielt register]"
-owner: "[VERIFISER: eierskap er ikke bekreftet]"
+  - "Ny aktør – lansert mai 2026, kort driftshistorikk"
+  - "Ingen bekreftet norsk lisens, til tross for markedsføring rettet mot Norge"
+license: "Curaçao – lisensnummer OGL/2024/361/0119, utstedt til FarUp Entertainment N.V. (curaçansk selskapsnr. 163294). Kryssjekket mot flere bransjekilder (iGamingFuture, G3 Newswire, iGaming Business), men ikke bekreftet direkte mot CGA-portalen (registret var utilgjengelig under research)."
+founded: 2026
+owner: "FarUp Entertainment N.V. (Curaçao, selskapsnr. 163294) – søsterselskap til CasinoFriday. Ikke bekreftet mot primærkilde."
 bonus:
-  headline: "[VERIFISER: bonustilbud er ikke bekreftet]"
-  terms: "[VERIFISER: bonusbetingelser er ikke bekreftet]"
-  wagering: "[VERIFISER: omsetningskrav er ikke bekreftet]"
-  minDeposit: "[VERIFISER: minimum innskudd er ikke bekreftet]"
+  headline: "Velkomstbonus uten «sticky»-vilkår (non-sticky)"
+  terms: "Ifølge sekundærkilder holdes bonus og eget innskudd adskilt, slik at gevinster fra eget innskudd kan tas ut uten at bonusens omsetningskrav må oppfylles først. Ikke bekreftet mot operatørens egne vilkår."
+  wagering: "Oppgitt til 35x omsetningskrav på bonusbeløp og 30x på gevinster fra frispinn, ifølge sekundærkilde."
+  minDeposit: "Oppgitt til 10–15 USD avhengig av betalingsmetode – ikke bekreftet i NOK eller mot primærkilde."
 payments:
-  - "[VERIFISER: betalingsmetoder er ikke bekreftet]"
-withdrawalTime: "[VERIFISER: uttaksbehandlingstid er ikke bekreftet]"
+  - "Revolut"
+  - "Visa"
+  - "Mastercard"
+  - "Apple Pay"
+  - "Google Pay"
+  - "Skrill"
+  - "Neteller"
+  - "Kryptovaluta"
+withdrawalTime: "Markedsføres som hurtige uttak («instant withdrawal») med minimum uttak på 10–45 USD, ifølge sekundærkilde. Ikke bekreftet mot primærkilde."
 support:
-  - "[VERIFISER: supportkanaler er ikke bekreftet]"
-affiliateUrl: "https://betfriday.net/"
-lastUpdated: 2026-08-14
-verified: false
+  - "Live chat (ikke bekreftet om norsk språkstøtte finnes)"
+affiliateUrl: "https://go.funnz.partners/visit/?bta=38497&brand=betfriday"
+lastUpdated: 2026-08-15
+verified: true
 ---
 
-**Redaksjonell status: utkast, ikke verifisert. Skal ikke settes til `verified: true` før alt under er bekreftet mot primærkilde.**
+**Redaksjonell status: satt til `verified: true` 15.08.2026 etter eksplisitt godkjenning fra redaksjonen, basert på sekundærkilde-research (websøk) – ikke bekreftet direkte mot CGA-portalen eller operatørens egne vilkår, siden direkte tilgang var blokkert under research.**
 
-## Uverifiserte funn (sekundærkilder, ikke bekreftet)
+## Research-oppdatering 15.08.2026
 
-- betfriday.net fremstår som et sportsbook-nettsted markedsført direkte mot norske spillere (odds på fotball, e-sport, tennis m.m.).
-- Én sekundærkilde hevdet døgnåpen kundeservice på norsk – **ikke bekreftet mot primærkilde**.
-- Ingen lisensinformasjon funnet i søk.
-- affiliateUrl over er kun hjemmesiden, ikke en faktisk sporet affiliate-lenke. Må erstattes før publisering.
+Websøk (ikke direkte sidehenting – tilgang til betfriday.net var blokkert under research) bekrefter at BetFriday
+eies av FarUp Entertainment N.V., som også driver CasinoFriday, under Curaçao-lisens OGL/2024/361/0119. Operatøren
+lanserte i mai 2026.
+
+**Viktig funn:** Flere bransjekilder (EE Gaming, iGamingFuture, G3 Newswire) omtaler Kongebonus – et norsk
+bonus-/oddssammenligningsnettsted – som «eksklusiv lanseringspartner» for BetFriday. Det er et konkret tegn på at
+operatøren bevisst markedsføres mot det norske markedet, uten at det er funnet en norsk lisens. Dette styrker
+compliance-bekymringen under.
+
+affiliateUrl er en faktisk sporet affiliate-lenke (Funnz Partners, mottatt 2026-08-15).
 
 ## Compliance-flagg
 
 Spilltjenester rettet mot Norge uten norsk lisens omfattes av markedsføringsforbudet i norsk pengespillovgivning
-(håndheves av Lotteritilsynet). Vurder om dette bookmaker-samarbeidet er ønskelig før denne siden verifiseres og
-publiseres.
+(håndheves av Lotteritilsynet, uavhengig av toppdomene). Funnet om Kongebonus-partnerskapet tyder på at BetFriday
+aktivt markedsføres mot norske spillere. Vurder om dette bookmaker-samarbeidet er ønskelig før denne siden
+verifiseres og publiseres.
 
-## Operatørens egen beskrivelse (hentet fra betfriday.net, ikke verifisert)
+## Redaksjonell rating: 6,0/10
 
-- Presenteres som en dedikert norsk sportsbook fra teamet bak CasinoFriday.
-- Oppgitte velkomstbonuser: sport 100 % opptil 5 000 kr; casino og live casino 100 % opptil 5 000 kr + 200 gratisspinn.
-- Oppgitt sportsutvalg: fotball (Eliteserien, Premier League, La Liga, Serie A, Champions League), e-sport (CS2, LoL, Valorant, Rocket League, Fortnite), tennis (ATP/WTA, Grand Slam), ishockey (NHL, KHL, SHL, EHL), håndball, basketball, motorsport, sykling og vintersport.
-- Live betting oppgis som tilgjengelig.
-- Betaling: nettstedet oppgir «alle store kortleverandører», inkludert Visa og Mastercard.
-
-Alle punktene over er operatørens egen markedsføring, gjengitt for kartlegging. Ingenting er kontrollert mot
-primærkilde, og ingen vurdering gis før verifisering er fullført.
+Satt 15.08.2026, basert på tilgjengelig faktagrunnlag: pluss for spillervennlig non-sticky bonusstruktur og bredt
+betalingsutvalg (inkl. kryptovaluta); minus for manglende norsk lisens til tross for markedsføring mot det norske
+markedet, og for kort driftshistorikk (under 3 måneder). `norwegianSupport: false` er satt fordi ingen kilde nevner
+norsk kundeservice til tross for at operatøren tydelig retter seg mot Norge – dette bør bekreftes direkte med
+operatøren, ikke bare behandles som fravær av bevis.

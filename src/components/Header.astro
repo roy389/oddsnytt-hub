@@ -11,17 +11,29 @@ const navLinks = [
 
 <header class="bg-navy-950 text-paper">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
-    <a href="/" class="text-xl font-bold tracking-tight text-paper">
+    <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-paper">
+      <svg viewBox="0 0 32 32" class="h-7 w-7 shrink-0" aria-hidden="true">
+        <rect width="32" height="32" rx="6" fill="#f5a623" />
+        <text x="16" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#070b16">O</text>
+      </svg>
       {SITE_NAME}
     </a>
 
     <nav class="hidden gap-6 text-sm font-medium md:flex" aria-label="Hovedmeny">
       {
-        navLinks.map((link) => (
-          <a href={link.href} class="text-paper/90 transition-colors hover:text-signal">
-            {link.label}
-          </a>
-        ))
+        navLinks.map((link) => {
+          const isActive =
+            link.href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.startsWith(link.href);
+          return (
+            <a
+              href={link.href}
+              aria-current={isActive ? 'page' : undefined}
+              class={`transition-colors hover:text-signal ${isActive ? 'text-signal' : 'text-paper/90'}`}
+            >
+              {link.label}
+            </a>
+          );
+        })
       }
     </nav>
 

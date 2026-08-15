@@ -1,10 +1,16 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import { RISK_DISCLAIMER } from '@/lib/constants';
 
 const title = 'Oddsnytt – oddstips, nyheter og bookmakere';
 const description =
   'Oddsnytt gir deg dagens oddstips, ferske sportsnyheter og grundige bookmakeromtaler samlet på ett sted – analysert av erfarne sportsjournalister.';
+
+const allNews = await getCollection('nyheter');
+const latestNews = [...allNews]
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
 ---
 
 <Layout title={title} description={description}>
@@ -28,6 +34,33 @@ const description =
         <p class="mt-2 text-sm text-ink-dim">Grundige anmeldelser og sammenligning.</p>
       </a>
     </div>
+
+    {
+      latestNews.length > 0 && (
+        <div class="mt-16">
+          <div class="flex items-baseline justify-between">
+            <h2 class="text-xl font-bold text-navy-950">Siste nyheter</h2>
+            <a href="/nyheter/" class="text-sm font-medium text-signal-dark hover:underline">
+              Se alle nyheter →
+            </a>
+          </div>
+          <div class="mt-6 grid gap-6 sm:grid-cols-3">
+            {latestNews.map((entry) => (
+              <a
+                href={`/nyheter/${entry.id}/`}
+                class="flex flex-col gap-2 rounded-lg border border-navy-700/15 bg-white p-5 shadow-sm hover:border-signal"
+              >
+                <span class="w-fit rounded-full bg-navy-950 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-signal">
+                  {entry.data.category}
+                </span>
+                <h3 class="text-base font-bold text-navy-950">{entry.data.title}</h3>
+                <p class="text-sm text-ink-dim">{entry.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
 
     <p class="mt-12 max-w-2xl text-sm text-ink-dim">{RISK_DISCLAIMER}</p>
   </section>

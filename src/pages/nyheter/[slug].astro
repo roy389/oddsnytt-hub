@@ -48,7 +48,9 @@ const newsArticleLd = {
   structuredData={[newsArticleLd]}
 >
   <article class="mx-auto max-w-3xl px-4 py-16">
-    <p class="text-xs font-semibold uppercase tracking-wide text-ink-dim">{article.category}</p>
+    <span class="w-fit rounded-full bg-navy-950 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-signal">
+      {article.category}
+    </span>
     <h1 class="mt-1 text-3xl font-bold text-navy-950">{article.title}</h1>
 
     <div class="mt-3">
