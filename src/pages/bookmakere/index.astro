@@ -58,10 +58,37 @@ const comparisonRows = bookmakers.map((entry) => ({
                 bonusHeadline={entry.data.bonus.headline}
                 affiliateUrl={entry.data.affiliateUrl}
                 pros={entry.data.pros}
+                logo={entry.data.logo}
+                logoAlt={entry.data.logoAlt}
+                logoTheme={entry.data.logoTheme}
               />
             ))}
           </div>
         </>
+      )
+    }
+
+    {
+      drafts.length > 0 && (
+        <div class="mt-16">
+          <h2 class="text-2xl font-bold text-navy-950">Bookmakere under gjennomgang</h2>
+          <p class="mt-2 max-w-2xl text-sm text-ink-dim">
+            Disse operatørene er registrert hos oss, men omtalene er ikke ferdig verifisert. Vi viser
+            logo og operatørens egen beskrivelse, uten vurdering, bonusanbefaling eller affiliatelenke.
+          </p>
+          <div class="mt-6 flex flex-col gap-4">
+            {drafts.map((entry) => (
+              <BookmakerDraftCard
+                name={entry.data.name}
+                logo={entry.data.logo}
+                logoAlt={entry.data.logoAlt}
+                logoTheme={entry.data.logoTheme}
+                operatorSummary={entry.data.operatorSummary}
+                siteUrl={entry.data.affiliateUrl}
+              />
+            ))}
+          </div>
+        </div>
       )
     }
   </section>
