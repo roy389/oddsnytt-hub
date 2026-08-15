@@ -1,7 +1,7 @@
 ---
 name: "BetFriday"
 slug: "betfriday"
-logo: "/__l5e/assets-v1/7833b63a-da48-4aa6-af1c-bb8df6fa98a5/betfriday-logo.png"
+logo: "/images/bookmakere/betfriday.webp"
 logoAlt: "BetFriday logo"
 logoTheme: "light"
 operatorSummary: "BetFriday presenterer seg som en dedikert norsk sportsbook fra teamet bak CasinoFriday, med odds på fotball, e-sport, tennis og ishockey, live betting og velkomstbonus oppgitt til 100 % opptil 5 000 kr på sport."

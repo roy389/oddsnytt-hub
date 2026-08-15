@@ -1,7 +1,7 @@
 ---
 name: "UnionBet"
 slug: "unionbet"
-logo: "/__l5e/assets-v1/ba7e3bbf-a38e-4d8a-ba27-edaecfa4f986/unionbet-logo.png"
+logo: "/images/bookmakere/unionbet.webp"
 logoAlt: "UnionBet logo"
 logoTheme: "dark"
 operatorSummary: "UnionBet markedsfører seg som en kombinert casino- og sportsbook-konto i NOK med over 3 500 spill, live casino, odds før kamp og live, samt kampanjer som Free Bet og Early Payout. Nettstedet oppgir selv lisens fra Kahnawake Gaming Commission og ingen norsk spilltillatelse."
