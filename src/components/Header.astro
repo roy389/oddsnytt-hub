@@ -1,5 +1,6 @@
 ---
 import { AGE_LIMIT_LABEL, SITE_NAME } from '@/lib/constants';
+import ThemeToggle from '@/components/ThemeToggle.astro';
 
 const navLinks = [
   { href: '/', label: 'Forsiden' },
@@ -11,11 +12,15 @@ const navLinks = [
 
 <header class="bg-inkwell text-paper">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
-    <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-paper">
-      <svg viewBox="0 0 32 32" class="h-7 w-7 shrink-0" aria-hidden="true">
-        <rect width="32" height="32" rx="6" fill="#f5a623" />
-        <text x="16" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#070b16">O</text>
-      </svg>
+    <a href="/" class="flex items-center gap-2.5 text-xl font-bold tracking-tight text-paper">
+      <img
+        src="/images/oddsnytt-mark.webp"
+        alt=""
+        width="328"
+        height="444"
+        class="h-8 w-auto shrink-0"
+        aria-hidden="true"
+      />
       {SITE_NAME}
     </a>
 
