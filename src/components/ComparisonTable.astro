@@ -1,5 +1,6 @@
 ---
 import RatingBadge from '@/components/RatingBadge.astro';
+import BookmakerLogo from '@/components/BookmakerLogo.astro';
 
 interface ComparisonRow {
   name: string;
@@ -8,7 +9,11 @@ interface ComparisonRow {
   bonusHeadline: string;
   minDeposit: string;
   affiliateUrl: string;
+  logo?: string;
+  logoAlt?: string;
+  logoTheme?: 'light' | 'dark';
 }
+
 
 interface Props {
   bookmakers: ComparisonRow[];
