@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import BookmakerCard from '@/components/BookmakerCard.astro';
+import BookmakerDraftCard from '@/components/BookmakerDraftCard.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import { isPublishedBookmaker } from '@/lib/content';
 
@@ -14,6 +15,10 @@ const bookmakers = allBookmakers
   .filter(isPublishedBookmaker)
   .sort((a, b) => b.data.rating - a.data.rating);
 
+const drafts = allBookmakers
+  .filter((entry) => !isPublishedBookmaker(entry))
+  .sort((a, b) => a.data.name.localeCompare(b.data.name, 'nb-NO'));
+
 const comparisonRows = bookmakers.map((entry) => ({
   name: entry.data.name,
   slug: entry.id,
@@ -21,6 +26,9 @@ const comparisonRows = bookmakers.map((entry) => ({
   bonusHeadline: entry.data.bonus.headline,
   minDeposit: entry.data.bonus.minDeposit,
   affiliateUrl: entry.data.affiliateUrl,
+  logo: entry.data.logo,
+  logoAlt: entry.data.logoAlt,
+  logoTheme: entry.data.logoTheme,
 }));
 ---
 
