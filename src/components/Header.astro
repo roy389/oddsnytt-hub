@@ -42,11 +42,14 @@ const navLinks = [
       }
     </nav>
 
-    <span
-      class="rounded border border-signal/60 px-2 py-1 text-xs font-bold text-signal"
-      title="Kun for spillere over 18 år"
-    >
-      {AGE_LIMIT_LABEL}
-    </span>
+    <div class="flex items-center gap-3">
+      <span
+        class="rounded border border-signal/60 px-2 py-1 text-xs font-bold text-signal"
+        title="Kun for spillere over 18 år"
+      >
+        {AGE_LIMIT_LABEL}
+      </span>
+      <ThemeToggle />
+    </div>
   </div>
 </header>
