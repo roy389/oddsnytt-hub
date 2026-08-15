@@ -61,6 +61,16 @@ const jsonLdBlocks = [organizationLd, websiteLd, ...structuredData];
     {resolvedOgImage && <meta name="twitter:image" content={resolvedOgImage} />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/oddsnytt-mark.png" />
+    <meta name="theme-color" content="#070b16" />
+
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('oddsnytt-theme');
+        const dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
 
     {
       jsonLdBlocks.map((block) => (
