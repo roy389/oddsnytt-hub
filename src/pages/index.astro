@@ -15,23 +15,23 @@ const latestNews = [...allNews]
 
 <Layout title={title} description={description}>
   <section class="mx-auto max-w-6xl px-4 py-16">
-    <h1 class="text-4xl font-bold text-navy-950">Oddsnytt</h1>
-    <p class="mt-4 max-w-2xl text-lg text-ink-dim">
+    <h1 class="text-4xl font-bold text-heading">Oddsnytt</h1>
+    <p class="mt-4 max-w-2xl text-lg text-muted">
       Dagens oddstips, daglige sportsnyheter og grundige bookmakeromtaler – samlet på ett sted.
     </p>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-3">
-      <a href="/oddstips/" class="rounded-lg border border-navy-700/15 bg-white p-6 shadow-sm hover:border-signal">
-        <h2 class="text-lg font-bold text-navy-950">Dagens oddstips</h2>
-        <p class="mt-2 text-sm text-ink-dim">Datadrevne spilltips publisert hver morgen.</p>
+      <a href="/oddstips/" class="rounded-lg border border-line/15 bg-card p-6 shadow-sm hover:border-signal">
+        <h2 class="text-lg font-bold text-heading">Dagens oddstips</h2>
+        <p class="mt-2 text-sm text-muted">Datadrevne spilltips publisert hver morgen.</p>
       </a>
-      <a href="/nyheter/" class="rounded-lg border border-navy-700/15 bg-white p-6 shadow-sm hover:border-signal">
-        <h2 class="text-lg font-bold text-navy-950">Daglige nyheter</h2>
-        <p class="mt-2 text-sm text-ink-dim">Journalistisk skrevne sportsnyheter.</p>
+      <a href="/nyheter/" class="rounded-lg border border-line/15 bg-card p-6 shadow-sm hover:border-signal">
+        <h2 class="text-lg font-bold text-heading">Daglige nyheter</h2>
+        <p class="mt-2 text-sm text-muted">Journalistisk skrevne sportsnyheter.</p>
       </a>
-      <a href="/bookmakere/" class="rounded-lg border border-navy-700/15 bg-white p-6 shadow-sm hover:border-signal">
-        <h2 class="text-lg font-bold text-navy-950">Bookmakeromtaler</h2>
-        <p class="mt-2 text-sm text-ink-dim">Grundige anmeldelser og sammenligning.</p>
+      <a href="/bookmakere/" class="rounded-lg border border-line/15 bg-card p-6 shadow-sm hover:border-signal">
+        <h2 class="text-lg font-bold text-heading">Bookmakeromtaler</h2>
+        <p class="mt-2 text-sm text-muted">Grundige anmeldelser og sammenligning.</p>
       </a>
     </div>
 
@@ -39,7 +39,7 @@ const latestNews = [...allNews]
       latestNews.length > 0 && (
         <div class="mt-16">
           <div class="flex items-baseline justify-between">
-            <h2 class="text-xl font-bold text-navy-950">Siste nyheter</h2>
+            <h2 class="text-xl font-bold text-heading">Siste nyheter</h2>
             <a href="/nyheter/" class="text-sm font-medium text-signal-dark hover:underline">
               Se alle nyheter →
             </a>
@@ -48,7 +48,7 @@ const latestNews = [...allNews]
             {latestNews.map((entry) => (
               <a
                 href={`/nyheter/${entry.id}/`}
-                class="flex flex-col overflow-hidden rounded-lg border border-navy-700/15 bg-white shadow-sm transition-colors hover:border-signal"
+                class="flex flex-col overflow-hidden rounded-lg border border-line/15 bg-card shadow-sm transition-colors hover:border-signal"
               >
                 <img
                   src={entry.data.image}
@@ -59,11 +59,11 @@ const latestNews = [...allNews]
                   class="aspect-video w-full object-cover"
                 />
                 <div class="flex flex-1 flex-col gap-2 p-5">
-                  <span class="w-fit rounded-full bg-navy-950 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-signal">
+                  <span class="w-fit rounded-full bg-inkwell px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-signal">
                     {entry.data.category}
                   </span>
-                  <h3 class="text-base font-bold text-navy-950">{entry.data.title}</h3>
-                  <p class="text-sm text-ink-dim">{entry.data.description}</p>
+                  <h3 class="text-base font-bold text-heading">{entry.data.title}</h3>
+                  <p class="text-sm text-muted">{entry.data.description}</p>
                 </div>
               </a>
             ))}
@@ -72,6 +72,6 @@ const latestNews = [...allNews]
       )
     }
 
-    <p class="mt-12 max-w-2xl text-sm text-ink-dim">{RISK_DISCLAIMER}</p>
+    <p class="mt-12 max-w-2xl text-sm text-muted">{RISK_DISCLAIMER}</p>
   </section>
 </Layout>

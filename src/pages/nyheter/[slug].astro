@@ -48,10 +48,10 @@ const newsArticleLd = {
   structuredData={[newsArticleLd]}
 >
   <article class="mx-auto max-w-3xl px-4 py-16">
-    <span class="w-fit rounded-full bg-navy-950 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-signal">
+    <span class="w-fit rounded-full bg-inkwell px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-signal">
       {article.category}
     </span>
-    <h1 class="mt-1 text-3xl font-bold text-navy-950">{article.title}</h1>
+    <h1 class="mt-1 text-3xl font-bold text-heading">{article.title}</h1>
 
     <div class="mt-3">
       <AuthorByline authorName={author.data.name} authorField={author.data.fagfelt} date={article.date} />
@@ -74,7 +74,7 @@ const newsArticleLd = {
       article.tags.length > 0 && (
         <ul class="mt-8 flex flex-wrap gap-2">
           {article.tags.map((tag) => (
-            <li class="rounded-full bg-paper-dim px-3 py-1 text-xs font-medium text-ink-dim">{tag}</li>
+            <li class="rounded-full bg-canvas-dim px-3 py-1 text-xs font-medium text-muted">{tag}</li>
           ))}
         </ul>
       )

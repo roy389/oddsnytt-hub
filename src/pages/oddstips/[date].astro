@@ -45,13 +45,13 @@ const sportsEventLd = matches.map(({ match }) => ({
 
 <Layout title={tip.title} description={tip.description} structuredData={[articleLd, ...sportsEventLd]}>
   <section class="mx-auto max-w-3xl px-4 py-16">
-    <p class="text-xs font-semibold uppercase tracking-wide text-ink-dim">{tip.sport}</p>
-    <h1 class="mt-1 text-3xl font-bold text-navy-950">{tip.title}</h1>
-    <time datetime={tip.date.toISOString()} class="text-sm text-ink-dim">
+    <p class="text-xs font-semibold uppercase tracking-wide text-muted">{tip.sport}</p>
+    <h1 class="mt-1 text-3xl font-bold text-heading">{tip.title}</h1>
+    <time datetime={tip.date.toISOString()} class="text-sm text-muted">
       {tip.date.toLocaleDateString('nb-NO', { dateStyle: 'long' })}
     </time>
 
-    <p class="mt-4 text-sm text-ink-dim">{RISK_DISCLAIMER}</p>
+    <p class="mt-4 text-sm text-muted">{RISK_DISCLAIMER}</p>
 
     <div class="mt-8 flex flex-col gap-5">
       {
