@@ -1,0 +1,19 @@
+---
+interface Props {
+  authorName: string;
+  authorField: string;
+  date: Date;
+}
+
+const { authorName, authorField, date } = Astro.props;
+---
+
+<p class="flex items-center gap-2 text-sm text-ink-dim">
+  <span class="font-semibold text-navy-950">{authorName}</span>
+  <span aria-hidden="true">·</span>
+  <span>{authorField}</span>
+  <span aria-hidden="true">·</span>
+  <time datetime={date.toISOString()}>
+    {date.toLocaleDateString('nb-NO', { dateStyle: 'long' })}
+  </time>
+</p>

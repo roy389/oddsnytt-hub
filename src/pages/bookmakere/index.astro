@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import BookmakerCard from '@/components/BookmakerCard.astro';
+import ComparisonTable from '@/components/ComparisonTable.astro';
+import { isPublishedBookmaker } from '@/lib/content';
+
+const title = 'Bookmakeromtaler – sammenlign norske bookmakere';
+const description =
+  'Sammenlign bookmakere med vurdering, bonusbetingelser og minimumsinnskudd. Grundige, verifiserte omtaler av bookmakere som tilbyr odds til norske spillere.';
+
+const allBookmakers = await getCollection('bookmakere');
+const bookmakers = allBookmakers
+  .filter(isPublishedBookmaker)
+  .sort((a, b) => b.data.rating - a.data.rating);
+
+const comparisonRows = bookmakers.map((entry) => ({
+  name: entry.data.name,
+  slug: entry.id,
+  rating: entry.data.rating,
+  bonusHeadline: entry.data.bonus.headline,
+  minDeposit: entry.data.bonus.minDeposit,
+  affiliateUrl: entry.data.affiliateUrl,
+}));
+---
+
+<Layout title={title} description={description}>
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h1 class="text-3xl font-bold text-navy-950">Bookmakeromtaler</h1>
+    <p class="mt-3 max-w-2xl text-ink-dim">
+      Vi tester og vurderer bookmakere ut fra odds, bonusbetingelser, betalingsløsninger og
+      support. Alle fakta verifiseres før publisering.
+    </p>
+
+    {
+      bookmakers.length === 0 ? (
+        <p class="mt-10 text-ink-dim">Ingen verifiserte bookmakeromtaler er publisert ennå.</p>
+      ) : (
+        <>
+          <div class="mt-10">
+            <ComparisonTable bookmakers={comparisonRows} />
+          </div>
+
+          <div class="mt-10 flex flex-col gap-4">
+            {bookmakers.map((entry) => (
+              <BookmakerCard
+                name={entry.data.name}
+                slug={entry.id}
+                rating={entry.data.rating}
+                bonusHeadline={entry.data.bonus.headline}
+                affiliateUrl={entry.data.affiliateUrl}
+                pros={entry.data.pros}
+              />
+            ))}
+          </div>
+        </>
+      )
+    }
+  </section>
+</Layout>

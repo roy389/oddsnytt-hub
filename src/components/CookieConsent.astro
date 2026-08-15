@@ -1,0 +1,56 @@
+---
+const CONSENT_KEY = 'oddsnytt-cookie-consent';
+---
+
+<div
+  id="cookie-consent"
+  class="fixed inset-x-0 bottom-0 z-50 hidden border-t border-navy-800 bg-navy-950 text-paper"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Cookie-samtykke"
+>
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4">
+    <p class="max-w-2xl text-sm text-paper/85">
+      Vi bruker informasjonskapsler for nødvendig funksjonalitet. Statistikk- og
+      annonsekapsler (inkludert affiliate-sporing) settes kun dersom du godtar dette.
+      Les mer i <a href="/personvern/" class="text-signal hover:underline">personvernerklæringen</a>.
+    </p>
+    <div class="flex shrink-0 gap-3">
+      <button
+        id="cookie-consent-necessary"
+        type="button"
+        class="rounded border border-paper/40 px-4 py-2 text-sm font-medium text-paper hover:border-paper"
+      >
+        Kun nødvendige
+      </button>
+      <button
+        id="cookie-consent-accept"
+        type="button"
+        class="rounded bg-signal px-4 py-2 text-sm font-bold text-signal-contrast hover:bg-signal-dark"
+      >
+        Godta alle
+      </button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ CONSENT_KEY }}>
+  const banner = document.getElementById('cookie-consent');
+  const acceptBtn = document.getElementById('cookie-consent-accept');
+  const necessaryBtn = document.getElementById('cookie-consent-necessary');
+
+  const storedConsent = window.localStorage.getItem(CONSENT_KEY);
+
+  if (!storedConsent && banner) {
+    banner.classList.remove('hidden');
+  }
+
+  function setConsent(value) {
+    window.localStorage.setItem(CONSENT_KEY, value);
+    banner?.classList.add('hidden');
+    window.dispatchEvent(new CustomEvent('oddsnytt:cookie-consent', { detail: { value } }));
+  }
+
+  acceptBtn?.addEventListener('click', () => setConsent('accepted'));
+  necessaryBtn?.addEventListener('click', () => setConsent('necessary-only'));
+</script>

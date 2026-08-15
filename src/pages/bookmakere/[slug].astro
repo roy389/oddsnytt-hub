@@ -1,0 +1,178 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import RatingBadge from '@/components/RatingBadge.astro';
+import { SITE_NAME } from '@/lib/constants';
+import { isPublishedBookmaker } from '@/lib/content';
+
+export async function getStaticPaths() {
+  const allBookmakers = await getCollection('bookmakere');
+  const bookmakers = allBookmakers.filter(isPublishedBookmaker);
+  return bookmakers.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const bookmaker = entry.data;
+const { Content } = await render(entry);
+
+const title = `${bookmaker.name} anmeldelse – vurdering, bonus og betingelser`;
+const description = `Anmeldelse av ${bookmaker.name}: vurdering ${bookmaker.rating.toFixed(1)}/10, ${bookmaker.bonus.headline.toLowerCase()}, betalingsløsninger og support. Verifisert ${bookmaker.lastUpdated.toLocaleDateString('nb-NO')}.`.slice(
+  0,
+  160,
+);
+
+const faqs = [
+  {
+    question: `Er ${bookmaker.name} lisensiert?`,
+    answer: `${bookmaker.name} opererer under lisensen: ${bookmaker.license}.`,
+  },
+  {
+    question: `Hva er minimum innskudd hos ${bookmaker.name}?`,
+    answer: `Minimum innskudd er ${bookmaker.bonus.minDeposit}.`,
+  },
+  {
+    question: `Hvilke omsetningskrav gjelder for velkomstbonusen?`,
+    answer: bookmaker.bonus.wagering,
+  },
+  {
+    question: `Hvor lang er uttaksbehandlingstiden hos ${bookmaker.name}?`,
+    answer: bookmaker.withdrawalTime,
+  },
+  {
+    question: `Tilbyr ${bookmaker.name} norsk kundeservice?`,
+    answer: bookmaker.norwegianSupport
+      ? `Ja, ${bookmaker.name} tilbyr kundeservice på norsk.`
+      : `Nei, ${bookmaker.name} tilbyr ikke kundeservice på norsk.`,
+  },
+];
+
+const reviewLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  itemReviewed: {
+    '@type': 'Organization',
+    name: bookmaker.name,
+  },
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: bookmaker.rating,
+    bestRating: 10,
+    worstRating: 1,
+  },
+  author: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+  },
+  datePublished: bookmaker.lastUpdated.toISOString(),
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<Layout title={title} description={description} structuredData={[reviewLd, faqLd]}>
+  <article class="mx-auto max-w-3xl px-4 py-16">
+    <div class="flex items-center gap-4">
+      <RatingBadge rating={bookmaker.rating} />
+      <div>
+        <h1 class="text-3xl font-bold text-navy-950">{bookmaker.name}</h1>
+        <p class="text-sm text-ink-dim">
+          Oppdatert {bookmaker.lastUpdated.toLocaleDateString('nb-NO', { dateStyle: 'long' })}
+        </p>
+      </div>
+    </div>
+
+    <div class="content-body mt-6">
+      <Content />
+    </div>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      <div class="rounded-lg border border-navy-700/15 bg-white p-5">
+        <h2 class="font-bold text-navy-950">Fordeler</h2>
+        <ul class="mt-2 space-y-1 text-sm text-ink-dim">
+          {bookmaker.pros.map((pro) => <li>✓ {pro}</li>)}
+        </ul>
+      </div>
+      <div class="rounded-lg border border-navy-700/15 bg-white p-5">
+        <h2 class="font-bold text-navy-950">Ulemper</h2>
+        <ul class="mt-2 space-y-1 text-sm text-ink-dim">
+          {bookmaker.cons.map((con) => <li>✕ {con}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 rounded-lg border border-signal/40 bg-white p-5">
+      <h2 class="font-bold text-navy-950">{bookmaker.bonus.headline}</h2>
+      <dl class="mt-3 grid gap-2 text-sm text-ink-dim sm:grid-cols-2">
+        <div>
+          <dt class="font-semibold text-navy-950">Betingelser</dt>
+          <dd>{bookmaker.bonus.terms}</dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-navy-950">Omsetningskrav</dt>
+          <dd>{bookmaker.bonus.wagering}</dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-navy-950">Min. innskudd</dt>
+          <dd>{bookmaker.bonus.minDeposit}</dd>
+        </div>
+      </dl>
+      <a
+        href={bookmaker.affiliateUrl}
+        target="_blank"
+        rel="nofollow sponsored noopener"
+        class="mt-4 inline-flex items-center justify-center rounded bg-signal px-4 py-2 text-sm font-bold text-signal-contrast hover:bg-signal-dark"
+      >
+        Besøk {bookmaker.name}
+      </a>
+      <p class="mt-1 text-[11px] uppercase tracking-wide text-ink-dim/70">Annonselenke</p>
+    </div>
+
+    <div class="mt-8 grid gap-6 text-sm text-ink-dim sm:grid-cols-2">
+      <div>
+        <h2 class="font-bold text-navy-950">Om {bookmaker.name}</h2>
+        <ul class="mt-2 space-y-1">
+          <li>Lisens: {bookmaker.license}</li>
+          <li>Etablert: {bookmaker.founded}</li>
+          <li>Eier: {bookmaker.owner}</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-bold text-navy-950">Betaling og support</h2>
+        <ul class="mt-2 space-y-1">
+          <li>Betalingsmetoder: {bookmaker.payments.join(', ')}</li>
+          <li>Uttaksbehandlingstid: {bookmaker.withdrawalTime}</li>
+          <li>Support: {bookmaker.support.join(', ')}</li>
+          <li>Norsk support: {bookmaker.norwegianSupport ? 'Ja' : 'Nei'}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <h2 class="text-xl font-bold text-navy-950">Ofte stilte spørsmål</h2>
+      <dl class="mt-4 space-y-4">
+        {
+          faqs.map((faq) => (
+            <div>
+              <dt class="font-semibold text-navy-950">{faq.question}</dt>
+              <dd class="mt-1 text-sm text-ink-dim">{faq.answer}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </article>
+</Layout>

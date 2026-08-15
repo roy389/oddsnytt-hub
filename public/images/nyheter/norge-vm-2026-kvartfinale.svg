@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#070b16" />
+  <rect x="0" y="290" width="1200" height="18" fill="#f7f7f4" />
+  <rect x="0" y="298" width="1200" height="4" fill="#ba0c2f" />
+  <rect x="520" y="0" width="18" height="675" fill="#f7f7f4" />
+  <rect x="528" y="0" width="4" height="675" fill="#ba0c2f" />
+
+  <circle cx="230" cy="500" r="70" fill="none" stroke="#f5a623" stroke-width="6" />
+  <path
+    d="M230 445 L263 470 L250 512 L210 512 L197 470 Z"
+    fill="none"
+    stroke="#f5a623"
+    stroke-width="4"
+  />
+
+  <text x="620" y="150" font-family="Arial, sans-serif" font-size="64" font-weight="700" fill="#f7f7f4">
+    VM 2026
+  </text>
+  <text x="620" y="210" font-family="Arial, sans-serif" font-size="34" font-weight="600" fill="#f5a623">
+    Kvartfinale
+  </text>
+  <text x="620" y="470" font-family="Arial, sans-serif" font-size="28" fill="#a8b0c2">
+    Norges beste VM-resultat på 28 år
+  </text>
+</svg>

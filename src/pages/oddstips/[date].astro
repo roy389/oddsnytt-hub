@@ -1,0 +1,83 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import TipsCard from '@/components/TipsCard.astro';
+import { getPublishableTips } from '@/lib/content';
+import { SITE_NAME, RISK_DISCLAIMER } from '@/lib/constants';
+
+export async function getStaticPaths() {
+  const publishableTips = await getPublishableTips();
+  return publishableTips.map((resolvedTip) => ({
+    params: { date: resolvedTip.entry.id },
+    props: { resolvedTip },
+  }));
+}
+
+const { resolvedTip } = Astro.props;
+const { entry, matches } = resolvedTip;
+const tip = entry.data;
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: tip.title,
+  datePublished: tip.date.toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+  },
+};
+
+const sportsEventLd = matches.map(({ match }) => ({
+  '@context': 'https://schema.org',
+  '@type': 'SportsEvent',
+  name: `${match.home} - ${match.away}`,
+  startDate: match.kickoff.toISOString(),
+  competitor: [
+    { '@type': 'SportsTeam', name: match.home },
+    { '@type': 'SportsTeam', name: match.away },
+  ],
+  superEvent: {
+    '@type': 'SportsEvent',
+    name: match.league,
+  },
+}));
+---
+
+<Layout title={tip.title} description={tip.description} structuredData={[articleLd, ...sportsEventLd]}>
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <p class="text-xs font-semibold uppercase tracking-wide text-ink-dim">{tip.sport}</p>
+    <h1 class="mt-1 text-3xl font-bold text-navy-950">{tip.title}</h1>
+    <time datetime={tip.date.toISOString()} class="text-sm text-ink-dim">
+      {tip.date.toLocaleDateString('nb-NO', { dateStyle: 'long' })}
+    </time>
+
+    <p class="mt-4 text-sm text-ink-dim">{RISK_DISCLAIMER}</p>
+
+    <div class="mt-8 flex flex-col gap-5">
+      {
+        matches.map(({ match, bookmaker }) => (
+          <div>
+            <TipsCard
+              home={match.home}
+              away={match.away}
+              league={match.league}
+              kickoff={match.kickoff}
+              market={match.market}
+              odds={match.odds}
+              bookmakerName={bookmaker.data.name}
+              affiliateUrl={bookmaker.data.affiliateUrl}
+              confidence={match.confidence}
+              reasoning={match.reasoning}
+            />
+            <a
+              href={`/bookmakere/${bookmaker.id}/`}
+              class="mt-2 inline-block text-sm text-signal-dark hover:underline"
+            >
+              Les vår anmeldelse av {bookmaker.data.name} →
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import {
+  AFFILIATE_DISCLOSURE,
+  AGE_LIMIT_LABEL,
+  HJELPELINJEN_PHONE,
+  HJELPELINJEN_URL,
+  RISK_DISCLAIMER,
+  SITE_NAME,
+} from '@/lib/constants';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-navy-800 bg-navy-950 text-paper">
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <div class="flex flex-wrap items-start justify-between gap-8">
+      <div class="max-w-md space-y-3">
+        <p class="flex items-center gap-2 text-sm font-bold text-signal">
+          <span class="rounded border border-signal/60 px-2 py-0.5">{AGE_LIMIT_LABEL}</span>
+          Ansvarlig spilling
+        </p>
+        <p class="text-sm text-paper/80">{RISK_DISCLAIMER}</p>
+        <p class="text-sm text-paper/80">
+          Trenger du noen å snakke med? Kontakt{' '}
+          <a href={HJELPELINJEN_URL} class="text-signal hover:underline" rel="noopener">
+            Hjelpelinjen
+          </a>
+          {' '}på telefon{' '}
+          <a href={`tel:${HJELPELINJEN_PHONE.replace(/\s/g, '')}`} class="text-signal hover:underline">
+            {HJELPELINJEN_PHONE}
+          </a>.
+        </p>
+        <p class="text-xs text-paper/60">{AFFILIATE_DISCLOSURE} Merkes som «Annonselenker» / «Reklame».</p>
+      </div>
+
+      <nav class="flex flex-col gap-2 text-sm text-paper/80" aria-label="Om oss">
+        <a href="/ansvarlig-spilling/" class="hover:text-signal">Ansvarlig spilling</a>
+        <a href="/om-oss/" class="hover:text-signal">Om oss</a>
+        <a href="/personvern/" class="hover:text-signal">Personvern</a>
+      </nav>
+    </div>
+
+    <p class="mt-8 text-xs text-paper/50">
+      &copy; {currentYear} {SITE_NAME}. Alle oddstips er analyser, ikke garantier for gevinst.
+    </p>
+  </div>
+</footer>

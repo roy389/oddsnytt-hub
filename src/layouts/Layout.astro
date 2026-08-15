@@ -1,0 +1,85 @@
+---
+import CookieConsent from '@/components/CookieConsent.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import '@/styles/global.css';
+import { SITE_NAME, SITE_TAGLINE } from '@/lib/constants';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  structuredData?: Record<string, unknown>[];
+  noIndex?: boolean;
+}
+
+const { title, description, ogImage, ogImageAlt, structuredData = [], noIndex = false } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedOgImage = ogImage ? new URL(ogImage, Astro.site).toString() : undefined;
+
+const organizationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: Astro.site?.toString(),
+};
+
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: Astro.site?.toString(),
+  description: SITE_TAGLINE,
+};
+
+const jsonLdBlocks = [organizationLd, websiteLd, ...structuredData];
+---
+
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
+    {ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {resolvedOgImage && <meta name="twitter:image" content={resolvedOgImage} />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {
+      jsonLdBlocks.map((block) => (
+        <script type="application/ld+json" set:html={JSON.stringify(block)} />
+      ))
+    }
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-signal focus:px-4 focus:py-2 focus:text-signal-contrast"
+    >
+      Hopp til hovedinnhold
+    </a>
+    <Header />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <CookieConsent />
+  </body>
+</html>

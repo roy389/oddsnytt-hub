@@ -1,0 +1,65 @@
+---
+import RatingBadge from '@/components/RatingBadge.astro';
+
+interface ComparisonRow {
+  name: string;
+  slug: string;
+  rating: number;
+  bonusHeadline: string;
+  minDeposit: string;
+  affiliateUrl: string;
+}
+
+interface Props {
+  bookmakers: ComparisonRow[];
+}
+
+const { bookmakers } = Astro.props;
+---
+
+<div class="overflow-x-auto rounded-lg border border-navy-700/15">
+  <table class="w-full min-w-[640px] border-collapse bg-white text-left text-sm">
+    <thead class="bg-navy-950 text-paper">
+      <tr>
+        <th class="px-4 py-3 font-semibold">Bookmaker</th>
+        <th class="px-4 py-3 font-semibold">Vurdering</th>
+        <th class="px-4 py-3 font-semibold">Bonus</th>
+        <th class="px-4 py-3 font-semibold">Min. innskudd</th>
+        <th class="px-4 py-3 font-semibold">
+          <span class="sr-only">Handling</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        bookmakers.map((bookmaker) => (
+          <tr class="border-t border-navy-700/10">
+            <td class="px-4 py-3 font-medium text-navy-950">
+              <a href={`/bookmakere/${bookmaker.slug}/`} class="hover:text-signal-dark">
+                {bookmaker.name}
+              </a>
+            </td>
+            <td class="px-4 py-3">
+              <RatingBadge rating={bookmaker.rating} size="sm" />
+            </td>
+            <td class="px-4 py-3 text-ink-dim">{bookmaker.bonusHeadline}</td>
+            <td class="px-4 py-3 text-ink-dim">{bookmaker.minDeposit}</td>
+            <td class="px-4 py-3 text-right">
+              <a
+                href={bookmaker.affiliateUrl}
+                target="_blank"
+                rel="nofollow sponsored noopener"
+                class="inline-flex items-center justify-center rounded bg-signal px-3 py-1.5 text-xs font-bold text-signal-contrast hover:bg-signal-dark"
+              >
+                Spill her
+              </a>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <p class="border-t border-navy-700/10 bg-paper-dim px-4 py-2 text-[11px] uppercase tracking-wide text-ink-dim/70">
+    Annonselenker
+  </p>
+</div>
