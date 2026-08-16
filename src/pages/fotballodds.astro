@@ -1,0 +1,125 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import oddsData from '@/data/fotball-odds.json';
+import { AFFILIATE_DISCLOSURE } from '@/lib/constants';
+
+const title = 'Fotballodds – live markedsodds';
+const description =
+  'Ekte, oppdaterte fotballodds hentet automatisk fra The Odds API. Sammenlign 1X2-odds for de største ligaene, oppdatert daglig.';
+
+type OddsMatch = {
+  id: string;
+  league: string;
+  home: string;
+  away: string;
+  kickoff: string;
+  odds: { home: number | null; draw: number | null; away: number | null };
+  bookmakerCount: number;
+};
+
+const { generatedAt, matches, source } = oddsData as {
+  generatedAt: string | null;
+  matches: OddsMatch[];
+  source: string;
+};
+
+const generatedLabel = generatedAt
+  ? new Date(generatedAt).toLocaleString('nb-NO', { dateStyle: 'long', timeStyle: 'short' })
+  : null;
+
+const matchesByLeague = matches.reduce<Record<string, OddsMatch[]>>((acc, match) => {
+  (acc[match.league] ??= []).push(match);
+  return acc;
+}, {});
+---
+
+<Layout title={title} description={description}>
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h1 class="text-3xl font-bold text-heading">Fotballodds</h1>
+    <p class="mt-3 max-w-2xl text-muted">
+      1X2-odds for kommende kamper i de største europeiske ligaene, hentet automatisk fra <a
+        href="https://the-odds-api.com"
+        rel="noopener"
+        class="text-signal-dark hover:underline">The Odds API</a
+      > og oppdatert daglig. Dette er rå markedsodds fra ekte bookmakere – ikke Oddsnytts egne
+      spillforslag. For redaksjonelle analyser og tips, se <a
+        href="/oddstips/"
+        class="text-signal-dark hover:underline">Dagens oddstips</a
+      >.
+    </p>
+
+    {
+      generatedLabel ? (
+        <p class="mt-2 text-xs text-muted/70">Sist oppdatert {generatedLabel} · Kilde: {source}</p>
+      ) : (
+        <p class="mt-2 text-xs text-muted/70">Oddsene er ikke hentet ennå.</p>
+      )
+    }
+
+    {
+      matches.length === 0 ? (
+        <p class="mt-10 text-muted">
+          Ingen odds tilgjengelig for øyeblikket. Dette oppdateres automatisk daglig.
+        </p>
+      ) : (
+        <div class="mt-10 flex flex-col gap-10">
+          {Object.entries(matchesByLeague).map(([league, leagueMatches]) => (
+            <div>
+              <h2 class="text-lg font-bold text-heading">{league}</h2>
+              <div class="mt-3 overflow-x-auto rounded-lg border border-line/15">
+                <table class="w-full min-w-[560px] border-collapse bg-card text-left text-sm">
+                  <thead class="bg-inkwell text-paper">
+                    <tr>
+                      <th class="px-4 py-3 font-semibold">Kamp</th>
+                      <th class="px-4 py-3 font-semibold">Avspark</th>
+                      <th class="px-4 py-3 text-center font-semibold">1</th>
+                      <th class="px-4 py-3 text-center font-semibold">X</th>
+                      <th class="px-4 py-3 text-center font-semibold">2</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {leagueMatches.map((match) => (
+                      <tr class="border-t border-line/10">
+                        <td class="px-4 py-3 font-medium text-heading">
+                          {match.home} – {match.away}
+                        </td>
+                        <td class="px-4 py-3 text-muted">
+                          <time datetime={match.kickoff}>
+                            {new Date(match.kickoff).toLocaleString('nb-NO', {
+                              dateStyle: 'short',
+                              timeStyle: 'short',
+                            })}
+                          </time>
+                        </td>
+                        <td class="px-4 py-3 text-center font-mono text-heading">
+                          {match.odds.home?.toFixed(2) ?? '–'}
+                        </td>
+                        <td class="px-4 py-3 text-center font-mono text-heading">
+                          {match.odds.draw?.toFixed(2) ?? '–'}
+                        </td>
+                        <td class="px-4 py-3 text-center font-mono text-heading">
+                          {match.odds.away?.toFixed(2) ?? '–'}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    <div class="mt-12 rounded-lg border border-line/15 bg-card p-6">
+      <h2 class="text-lg font-bold text-heading">Vil du spille på disse kampene?</h2>
+      <p class="mt-2 text-sm text-muted">
+        Oddsene over viser markedsprisen fra store, internasjonale bookmakere – ikke nødvendigvis fra
+        våre samarbeidspartnere. Se <a href="/bookmakere/" class="text-signal-dark hover:underline"
+          >bookmakeromtalene våre</a
+        > for bookmakere vi har avtale med.
+      </p>
+      <p class="mt-3 text-xs text-muted/70">{AFFILIATE_DISCLOSURE}</p>
+    </div>
+  </section>
+</Layout>

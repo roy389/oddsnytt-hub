@@ -1,0 +1,39 @@
+name: Oppdater fotballodds
+
+on:
+  schedule:
+    # 06:17 UTC hver dag (unngår rundt-tall-tidspunkt for å spre belastning)
+    - cron: '17 6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-odds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Hent fotballodds
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: node scripts/fetch-fotball-odds.mjs
+
+      - name: Commit og push hvis noe endret seg
+        run: |
+          git config user.name "oddsnytt-odds-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git diff --quiet -- src/data/fotball-odds.json; then
+            echo "Ingen endringer i oddsdata."
+            exit 0
+          fi
+          git add src/data/fotball-odds.json
+          git commit -m "Oppdater fotballodds ($(date -u +%Y-%m-%dT%H:%MZ))"
+          git push
