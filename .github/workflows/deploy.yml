@@ -3,6 +3,9 @@ name: Deploy til GitHub Pages
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: ["Oppdater fotballodds"]
+    types: [completed]
   workflow_dispatch: {}
 
 permissions:
