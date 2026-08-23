@@ -1,0 +1,18 @@
+name: Test - Hent formdata
+on:
+  workflow_dispatch: {}
+
+jobs:
+  test-fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Kjør test
+        run: node scripts/fetch-team-form.mjs
+      - name: Vis resultat
+        run: cat src/data/team-form.json
