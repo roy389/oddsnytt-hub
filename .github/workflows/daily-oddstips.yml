@@ -1,0 +1,63 @@
+name: Generer dagens oddstips (til godkjenning)
+on:
+  schedule:
+    # 07:30 UTC hver dag
+    - cron: '30 7 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Hent formdata
+        run: node scripts/fetch-team-form.mjs
+
+      - name: Generer oddstips
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-oddstips.mjs
+
+      - name: Opprett branch og commit
+        id: commit
+        run: |
+          DATE=$(date -u +%Y-%m-%d)
+          BRANCH="oddstips/$DATE"
+          git config user.name "oddsnytt-oddstips-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Ingen ny fil generert, avbryter."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git checkout -b "$BRANCH"
+          git add src/content/tips/
+          git add src/data/team-form.json
+          git commit -m "Dagens oddstips ($DATE)"
+          git push origin "$BRANCH"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+
+      - name: Opprett Pull Request
+        if: steps.commit.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Dagens oddstips (${{ steps.commit.outputs.date }}) - venter på godkjenning" \
+            --body "Automatisk generert oddstips-artikkel. Les gjennom teksten før du merger - merge trigger publisering." \
+            --base main \
+            --head "${{ steps.commit.outputs.branch }}"
