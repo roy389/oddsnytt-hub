@@ -1,0 +1,27 @@
+name: Test - Generer bilde
+on:
+  workflow_dispatch: {}
+
+jobs:
+  test-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generer bilde
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/generate-image-test.mjs
+      - name: Commit bildet
+        run: |
+          git config user.name "oddsnytt-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/images/nyheter/
+          git diff --staged --quiet || git commit -m "Test: generert AI-bilde for NM friidrett-artikkel"
+          git push
