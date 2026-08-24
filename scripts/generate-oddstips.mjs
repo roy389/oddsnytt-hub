@@ -2,7 +2,11 @@
 // basert på faktiske odds (fotball-odds.json) og faktisk formdata (team-form.json).
 //
 // Bruker Anthropic API med tvunget verktøy-skjema, slik at output alltid er
-// strukturert JSON som matcher frontmatter-formatet i tips-collectionen.
+// strukturert JSON som matcher frontmatter-formatet i tips-collectionen
+// (src/content.config.ts) - inkludert de strenge kravene der:
+//   - description: 140-160 tegn
+//   - reasoning per kamp: minst 300 tegn
+//   - bookmaker: må referere til en faktisk fil i src/content/bookmakere/
 //
 // VIKTIG: Skriver ALDRI om formkurve for lag med færre enn 2 spilte kamper i
 // inneværende sesong - da instrueres modellen til kun å forholde seg til odds,
@@ -27,6 +31,8 @@ if (!API_KEY) {
 const MODEL = process.env.ANTHROPIC_MODEL ?? "claude-sonnet-4-5-20250929";
 const MIN_PLAYED_FOR_FORM = 2;
 const NUM_MATCHES_TO_PICK = 3;
+// Må matche "slug" på en faktisk fil i src/content/bookmakere/
+const BOOKMAKER_SLUG = "the-odds-api";
 
 function formatFormNote(teamName, formData) {
   if (!formData) {
@@ -79,6 +85,9 @@ ABSOLUTT FORBUD MOT FABRIKERTE FAKTA:
 - Bruk aldri fraser som "garantert gevinst", "sikker vinner" eller lignende - dette er analyse, ikke garantier.
 - Skriv på norsk (bokmål), i en nøktern og saklig tone: konkret, faktabasert, men lesbart.
 - VIKTIG: Sørg for at "home" og "away" i hvert element i "matches"-arrayet du returnerer, EKSAKT matcher lagnavnene i konteksten du fikk oppgitt for akkurat den kampen. Ikke bytt om rekkefølge eller bland sammen kamper.
+- STRENGE LENGDEKRAV (håndheves av systemet, brudd feiler hele publiseringen):
+  - "description" MÅ være mellom 140 og 160 tegn, ikke mer, ikke mindre.
+  - "reasoning" for HVER kamp MÅ være minst 300 tegn.
 
 For hver kamp skal du velge ETT tydelig marked å anbefale (f.eks. "Hjemmeseier (1)", "Borteseier (2)", "Uavgjort (X)") basert på oddsene og eventuell formdata, og gi en tillitsgrad (confidence) fra 1-5.`;
 
@@ -88,7 +97,9 @@ Her er dagens utvalgte kamper med faktiske odds og formdata:
 
 ${contextBlock}
 
-Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene. Husk: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnene oppgitt over for akkurat den kampen.`;
+Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene.
+Husk de strenge kravene: "description" mellom 140-160 tegn (tell nøye etter), og "reasoning" for hver kamp på minst 300 tegn.
+Husk også: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnene oppgitt over for akkurat den kampen.`;
 
   const toolSchema = {
     name: "publish_oddstips",
@@ -97,7 +108,12 @@ Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene. Husk: "
       type: "object",
       properties: {
         title: { type: "string", description: `Tittel, f.eks. "Dagens oddstips – ${dateStr}"` },
-        description: { type: "string", description: "Kort meta-beskrivelse, 1-2 setninger" },
+        description: {
+          type: "string",
+          minLength: 140,
+          maxLength: 160,
+          description: "Kort meta-beskrivelse, MÅ være mellom 140 og 160 tegn (strengt krav, tell etter)",
+        },
         intro: { type: "string", description: "Innledende avsnitt (brødtekst før matches-listen)" },
         outro: { type: "string", description: "Avsluttende avsnitt med ansvarlig spill-påminnelse" },
         matches: {
@@ -110,7 +126,11 @@ Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene. Husk: "
               league: { type: "string" },
               market: { type: "string" },
               confidence: { type: "integer", minimum: 1, maximum: 5 },
-              reasoning: { type: "string", description: "Begrunnelse, 3-6 setninger, kun basert på oppgitte fakta for NETTOPP DENNE kampen" },
+              reasoning: {
+                type: "string",
+                minLength: 300,
+                description: "Begrunnelse, MINST 300 tegn (strengt krav), kun basert på oppgitte fakta for NETTOPP DENNE kampen",
+              },
             },
             required: ["home", "away", "league", "market", "confidence", "reasoning"],
           },
@@ -140,3 +160,119 @@ Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene. Husk: "
   if (!res.ok) {
     const body = await res.text().catch(() => "");
     throw new Error(`Anthropic API-feil: ${res.status} ${res.statusText} — ${body.slice(0, 500)}`);
+  }
+
+  const data = await res.json();
+  const toolUse = data.content?.find((c) => c.type === "tool_use");
+  if (!toolUse) {
+    throw new Error("Ingen tool_use-blokk i Anthropic-responsen.");
+  }
+  return toolUse.input;
+}
+
+// Kobler AI-generert tekst til riktig kamp basert på lagnavn (IKKE indeks/rekkefølge).
+function findDraftMatch(draftMatches, originalMatch) {
+  const norm = (s) => s?.toLowerCase().trim();
+  return draftMatches.find(
+    (d) => norm(d.home) === norm(originalMatch.home) && norm(d.away) === norm(originalMatch.away)
+  );
+}
+
+function validateLengths(draft) {
+  const problems = [];
+  const descLen = draft.description?.length ?? 0;
+  if (descLen < 140 || descLen > 160) {
+    problems.push(`description er ${descLen} tegn (må være 140-160)`);
+  }
+  for (const m of draft.matches ?? []) {
+    const rLen = m.reasoning?.length ?? 0;
+    if (rLen < 300) {
+      problems.push(`reasoning for ${m.home}-${m.away} er ${rLen} tegn (må være minst 300)`);
+    }
+  }
+  if (problems.length > 0) {
+    throw new Error(
+      `AI-generert innhold overholder ikke lengdekrav, avbryter for å unngå feilet bygg:\n${problems.join("\n")}`
+    );
+  }
+}
+
+function buildFrontmatter(draft, matches, dateStr) {
+  validateLengths(draft);
+
+  const matchesYaml = matches
+    .map((m) => {
+      const d = findDraftMatch(draft.matches, m);
+      if (!d) {
+        throw new Error(
+          `Fant ikke AI-generert tekst for kampen ${m.home} - ${m.away}. Avbryter for å unngå feilkoblet innhold.`
+        );
+      }
+      const reasoningIndented = d.reasoning
+        .split("\n")
+        .map((line) => `      ${line}`)
+        .join("\n");
+      return `  - home: "${m.home}"
+    away: "${m.away}"
+    league: "${m.league}"
+    kickoff: ${m.kickoff}
+    market: "${d.market}"
+    odds: ${m.odds.home}
+    bookmaker: "${BOOKMAKER_SLUG}"
+    confidence: ${d.confidence}
+    reasoning: >-
+${reasoningIndented}`;
+    })
+    .join("\n");
+
+  return `---
+title: "${draft.title}"
+date: ${dateStr}
+sport: "fotball"
+description: "${draft.description}"
+matches:
+${matchesYaml}
+---
+${draft.intro}
+
+${draft.outro}
+`;
+}
+
+async function main() {
+  const oddsData = JSON.parse(await readFile(ODDS_FILE, "utf-8"));
+  const formData = JSON.parse(
+    await readFile(FORM_FILE, "utf-8").catch(() => "{}")
+  );
+
+  const matches = pickTodaysMatches(oddsData);
+  if (matches.length === 0) {
+    console.log("Ingen kamper i dag - skriver ingen oddstips-artikkel.");
+    return;
+  }
+
+  const contextBlock = buildContextBlock(matches, formData);
+  console.log("Kontekst sendt til Anthropic:\n" + contextBlock);
+
+  const dateStr = new Date().toISOString().slice(0, 10);
+  console.log("\nGenererer artikkel via Anthropic...");
+  const draft = await callAnthropic(contextBlock, dateStr);
+
+  if (!draft.matches || draft.matches.length !== matches.length) {
+    throw new Error(
+      `Uventet antall kamper i respons: forventet ${matches.length}, fikk ${draft.matches?.length}`
+    );
+  }
+
+  const markdown = buildFrontmatter(draft, matches, dateStr);
+
+  await mkdir(OUTPUT_DIR, { recursive: true });
+  const outPath = `${OUTPUT_DIR}/dagens-oddstips-${dateStr}.md`;
+  await writeFile(outPath, markdown, "utf-8");
+  console.log(`\nSkrev artikkel til ${outPath}`);
+}
+
+main().catch((err) => {
+  console.error("Feil under generering av oddstips:", err);
+  process.exit(1);
+});
