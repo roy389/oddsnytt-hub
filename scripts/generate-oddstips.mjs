@@ -32,7 +32,7 @@ const MODEL = process.env.ANTHROPIC_MODEL ?? "claude-sonnet-4-5-20250929";
 const MIN_PLAYED_FOR_FORM = 2;
 const NUM_MATCHES_TO_PICK = 3;
 // Må matche "slug" på en faktisk fil i src/content/bookmakere/
-const BOOKMAKER_SLUG = "the-odds-api";
+const BOOKMAKER_SLUG = "betfriday";
 
 function formatFormNote(teamName, formData) {
   if (!formData) {
