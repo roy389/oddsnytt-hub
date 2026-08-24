@@ -7,6 +7,10 @@
 // VIKTIG: Skriver ALDRI om formkurve for lag med færre enn 2 spilte kamper i
 // inneværende sesong - da instrueres modellen til kun å forholde seg til odds,
 // tabellplassering (hvis tilgjengelig) og generell kontekst.
+//
+// VIKTIG: AI-genererte kamper kobles sammen med de faktiske oddsdataene ved å
+// matche på lagnavn (home/away), IKKE på rekkefølge/indeks - dette forhindrer
+// at tekst fra én kamp ved en feil havner under en annen kamp i frontmatter.
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 
@@ -44,8 +48,6 @@ function pickTodaysMatches(oddsData) {
   const todaysMatches = oddsData.matches.filter(
     (m) => m.kickoff.slice(0, 10) === today
   );
-  // Prioriter kamper med flest bookmakere (mest pålitelig odds-snitt),
-  // og spre gjerne på ulike ligaer for variasjon.
   return todaysMatches
     .sort((a, b) => b.bookmakerCount - a.bookmakerCount)
     .slice(0, NUM_MATCHES_TO_PICK);
@@ -75,7 +77,8 @@ ABSOLUTT FORBUD MOT FABRIKERTE FAKTA:
 - Du skal ALDRI dikte opp kampresultater, spillernavn, skader, formkurver eller statistikk som ikke eksplisitt er oppgitt i konteksten under.
 - Hvis et lag er merket "IKKE skriv om formkurve", skal du under ingen omstendighet nevne resultatserie, seiersrekke, tapsrekke eller lignende for det laget. Fokuser i stedet på oddsene, tabellplassering (hvis oppgitt), eller generell kontekst om kampen/ligaen.
 - Bruk aldri fraser som "garantert gevinst", "sikker vinner" eller lignende - dette er analyse, ikke garantier.
-- Skriv på norsk (bokmål), i en nøktern og saklig tone som i eksempelet: konkret, faktabasert, men lesbart.
+- Skriv på norsk (bokmål), i en nøktern og saklig tone: konkret, faktabasert, men lesbart.
+- VIKTIG: Sørg for at "home" og "away" i hvert element i "matches"-arrayet du returnerer, EKSAKT matcher lagnavnene i konteksten du fikk oppgitt for akkurat den kampen. Ikke bytt om rekkefølge eller bland sammen kamper.
 
 For hver kamp skal du velge ETT tydelig marked å anbefale (f.eks. "Hjemmeseier (1)", "Borteseier (2)", "Uavgjort (X)") basert på oddsene og eventuell formdata, og gi en tillitsgrad (confidence) fra 1-5.`;
 
@@ -85,7 +88,7 @@ Her er dagens utvalgte kamper med faktiske odds og formdata:
 
 ${contextBlock}
 
-Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene.`;
+Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene. Husk: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnene oppgitt over for akkurat den kampen.`;
 
   const toolSchema = {
     name: "publish_oddstips",
@@ -102,12 +105,12 @@ Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene.`;
           items: {
             type: "object",
             properties: {
-              home: { type: "string" },
-              away: { type: "string" },
+              home: { type: "string", description: "Må eksakt matche hjemmelagets navn fra konteksten" },
+              away: { type: "string", description: "Må eksakt matche bortelagets navn fra konteksten" },
               league: { type: "string" },
               market: { type: "string" },
               confidence: { type: "integer", minimum: 1, maximum: 5 },
-              reasoning: { type: "string", description: "Begrunnelse, 3-6 setninger, kun basert på oppgitte fakta" },
+              reasoning: { type: "string", description: "Begrunnelse, 3-6 setninger, kun basert på oppgitte fakta for NETTOPP DENNE kampen" },
             },
             required: ["home", "away", "league", "market", "confidence", "reasoning"],
           },
@@ -137,85 +140,3 @@ Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene.`;
   if (!res.ok) {
     const body = await res.text().catch(() => "");
     throw new Error(`Anthropic API-feil: ${res.status} ${res.statusText} — ${body.slice(0, 500)}`);
-  }
-
-  const data = await res.json();
-  const toolUse = data.content?.find((c) => c.type === "tool_use");
-  if (!toolUse) {
-    throw new Error("Ingen tool_use-blokk i Anthropic-responsen.");
-  }
-  return toolUse.input;
-}
-
-function buildFrontmatter(draft, matches, dateStr) {
-  const matchesYaml = matches
-    .map((m, i) => {
-      const d = draft.matches[i];
-      const reasoningIndented = d.reasoning
-        .split("\n")
-        .map((line) => `      ${line}`)
-        .join("\n");
-      return `  - home: "${m.home}"
-    away: "${m.away}"
-    league: "${d.league}"
-    kickoff: ${m.kickoff}
-    market: "${d.market}"
-    odds: ${m.odds.home}
-    bookmaker: "the-odds-api"
-    confidence: ${d.confidence}
-    reasoning: >-
-${reasoningIndented}`;
-    })
-    .join("\n");
-
-  return `---
-title: "${draft.title}"
-date: ${dateStr}
-sport: "fotball"
-description: "${draft.description}"
-matches:
-${matchesYaml}
----
-${draft.intro}
-
-${draft.outro}
-`;
-}
-
-async function main() {
-  const oddsData = JSON.parse(await readFile(ODDS_FILE, "utf-8"));
-  const formData = JSON.parse(
-    await readFile(FORM_FILE, "utf-8").catch(() => "{}")
-  );
-
-  const matches = pickTodaysMatches(oddsData);
-  if (matches.length === 0) {
-    console.log("Ingen kamper i dag - skriver ingen oddstips-artikkel.");
-    return;
-  }
-
-  const contextBlock = buildContextBlock(matches, formData);
-  console.log("Kontekst sendt til Anthropic:\n" + contextBlock);
-
-  const dateStr = new Date().toISOString().slice(0, 10);
-  console.log("\nGenererer artikkel via Anthropic...");
-  const draft = await callAnthropic(contextBlock, dateStr);
-
-  if (!draft.matches || draft.matches.length !== matches.length) {
-    throw new Error(
-      `Uventet antall kamper i respons: forventet ${matches.length}, fikk ${draft.matches?.length}`
-    );
-  }
-
-  const markdown = buildFrontmatter(draft, matches, dateStr);
-
-  await mkdir(OUTPUT_DIR, { recursive: true });
-  const outPath = `${OUTPUT_DIR}/dagens-oddstips-${dateStr}.md`;
-  await writeFile(outPath, markdown, "utf-8");
-  console.log(`\nSkrev artikkel til ${outPath}`);
-}
-
-main().catch((err) => {
-  console.error("Feil under generering av oddstips:", err);
-  process.exit(1);
-});
