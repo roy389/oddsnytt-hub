@@ -1,0 +1,23 @@
+name: Test - Generer oddstips
+on:
+  workflow_dispatch: {}
+
+jobs:
+  test-generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Kjør formdata-henting
+        run: node scripts/fetch-team-form.mjs
+      - name: Generer oddstips
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-oddstips.mjs
+      - name: Vis generert fil
+        run: |
+          find src/content/tips -name "dagens-oddstips-*.md" -newer src/data/fotball-odds.json -exec cat {} \;
