@@ -65,7 +65,7 @@ async function research() {
   const today = new Date().toISOString().slice(0, 10);
   const data = await anthropicCall({
     maxTokens: 2048,
-    system: `Du er en research-assistent for en norsk sportsnettside. Du skal søke opp aktuelle, konkrete idrettsnyheter fra siste døgn - på tvers av ALLE idretter (fotball, tennis, håndball, langrenn, sykkel, friidrett, ski, osv.), ikke bare fotball.
+    system: `Du er en research-assistent for en norsk sportsnettside. Du skal søke opp aktuelle, konkrete idrettsnyheter fra siste døgn - på tvers av ALLE idretter og idrettsgrener (fotball, tennis, håndball, langrenn, sykkel, friidrett, ski, sjakk, e-sport som CS/Counter-Strike, Dota 2, League of Legends, Valorant osv.), ikke bare fotball.
 
 Finn 1-3 konkrete saker som:
 - Faktisk har skjedd de siste 24-48 timene
