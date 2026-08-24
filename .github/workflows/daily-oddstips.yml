@@ -43,11 +43,11 @@ jobs:
             exit 0
           fi
 
-          git checkout -b "$BRANCH"
+          git checkout -B "$BRANCH"
           git add src/content/tips/
           git add src/data/team-form.json
           git commit -m "Dagens oddstips ($DATE)"
-          git push origin "$BRANCH"
+          git push --force origin "$BRANCH"
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
@@ -60,4 +60,4 @@ jobs:
             --title "Dagens oddstips (${{ steps.commit.outputs.date }}) - venter på godkjenning" \
             --body "Automatisk generert oddstips-artikkel. Les gjennom teksten før du merger - merge trigger publisering." \
             --base main \
-            --head "${{ steps.commit.outputs.branch }}"
+            --head "${{ steps.commit.outputs.branch }}" || echo "PR finnes trolig allerede for denne branchen - sjekk Pull requests-fanen."
