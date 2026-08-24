@@ -15,6 +15,33 @@ const LEAGUE_IDS = {
   "Eliteserien - Norway": 59,
 };
 
+// Fjerner aksenter, vanlige klubb-prefikser/suffikser og normaliserer
+// til små bokstaver, slik at "Atlético Madrid" matcher "Atletico Madrid"
+// og "Bournemouth" matcher "AFC Bournemouth".
+function normalizeTeamName(name) {
+  if (!name) return "";
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // fjern aksenter
+    .toLowerCase()
+    .replace(/\b(afc|cf|fc|sc|ac|ca|ss|ssc|us|rc|as|club|calcio|de|santander)\b/g, "")
+    .replace(/[^a-z0-9]/g, "") // fjern mellomrom/tegn
+    .trim();
+}
+
+function namesMatch(a, b) {
+  const na = normalizeTeamName(a);
+  const nb = normalizeTeamName(b);
+  if (!na || !nb) return false;
+  if (na === nb) return true;
+  // Delvis match: den ene normaliserte strengen inneholder den andre
+  // (fanger opp f.eks. "racingsantander" vs "racing")
+  if (na.length >= 4 && nb.length >= 4) {
+    return na.includes(nb) || nb.includes(na);
+  }
+  return false;
+}
+
 async function fetchLeagueData(leagueId) {
   const url = `https://www.fotmob.com/api/data/leagues?id=${leagueId}`;
   const res = await fetch(url, {
@@ -27,6 +54,10 @@ async function fetchLeagueData(leagueId) {
   return res.json();
 }
 
+function findTableRow(table, teamName) {
+  return table.find((row) => namesMatch(row.name, teamName)) ?? null;
+}
+
 function extractTeamForm(leagueData, teamName) {
   if (!leagueData) return null;
 
@@ -35,11 +66,19 @@ function extractTeamForm(leagueData, teamName) {
     const table = leagueData.table?.[0]?.data?.table?.all
       ?? leagueData.overview?.table?.[0]?.data?.table?.all
       ?? [];
-    tableRow = table.find(
-      (row) => row.name?.toLowerCase() === teamName.toLowerCase()
-    );
+    tableRow = findTableRow(table, teamName);
+
+    // Noen ligaer (f.eks. med grupper) har flere tabeller
+    if (!tableRow) {
+      const allTables = leagueData.table ?? [];
+      for (const t of allTables) {
+        const rows = t.data?.table?.all ?? [];
+        tableRow = findTableRow(rows, teamName);
+        if (tableRow) break;
+      }
+    }
   } catch {
-    // ignorer
+    // ignorer, behold null
   }
 
   let recentMatches = [];
@@ -51,8 +90,12 @@ function extractTeamForm(leagueData, teamName) {
       .filter(
         (m) =>
           m.status?.finished &&
-          (m.home?.name?.toLowerCase() === teamName.toLowerCase() ||
-            m.away?.name?.toLowerCase() === teamName.toLowerCase())
+          (namesMatch(m.home?.name, teamName) || namesMatch(m.away?.name, teamName))
+      )
+      .sort(
+        (a, b) =>
+          new Date(a.status?.utcTime ?? 0).getTime() -
+          new Date(b.status?.utcTime ?? 0).getTime()
       )
       .slice(-5)
       .map((m) => ({
@@ -62,7 +105,7 @@ function extractTeamForm(leagueData, teamName) {
         date: m.status?.utcTime ?? null,
       }));
   } catch {
-    // ignorer
+    // ignorer, behold tom liste
   }
 
   return {
@@ -102,10 +145,15 @@ async function main() {
   }
 
   const teamForm = {};
+  const missing = [];
   for (const match of todaysMatches) {
     const leagueData = leagueDataCache[match.league];
-    teamForm[match.home] = extractTeamForm(leagueData, match.home);
-    teamForm[match.away] = extractTeamForm(leagueData, match.away);
+    const homeForm = extractTeamForm(leagueData, match.home);
+    const awayForm = extractTeamForm(leagueData, match.away);
+    teamForm[match.home] = homeForm;
+    teamForm[match.away] = awayForm;
+    if (homeForm?.position === null) missing.push(match.home);
+    if (awayForm?.position === null) missing.push(match.away);
   }
 
   const output = {
@@ -116,6 +164,9 @@ async function main() {
 
   await writeFile(OUTPUT_FILE, JSON.stringify(output, null, 2), "utf-8");
   console.log(`Skrev formdata for ${Object.keys(teamForm).length} lag til ${OUTPUT_FILE}`);
+  if (missing.length > 0) {
+    console.warn(`Fant ikke tabelldata for: ${missing.join(", ")}`);
+  }
 }
 
 main().catch((err) => {
