@@ -1,0 +1,19 @@
+name: Test - Research nyhetssak
+on:
+  workflow_dispatch: {}
+
+jobs:
+  test-research:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Kjør research-test
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/generate-nyhetsartikkel.mjs
