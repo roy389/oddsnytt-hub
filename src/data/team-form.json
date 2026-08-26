@@ -1,80 +1,32 @@
 {
-  "generatedAt": "2026-08-24T08:52:43.391Z",
-  "date": "2026-08-24",
+  "generatedAt": "2026-08-26T09:02:02.552Z",
+  "date": "2026-08-26",
   "teams": {
-    "Bologna": {
-      "position": 10,
-      "points": 0,
-      "played": 0,
-      "recentMatches": []
-    },
-    "Lazio": {
-      "position": 12,
-      "points": 0,
-      "played": 0,
-      "recentMatches": []
-    },
-    "CA Osasuna": {
-      "position": 16,
-      "points": 0,
-      "played": 0,
-      "recentMatches": []
-    },
-    "Levante": {
-      "position": 20,
-      "points": 0,
+    "Real Madrid": {
+      "position": 7,
+      "points": 3,
       "played": 1,
       "recentMatches": [
         {
           "home": "Espanyol",
-          "away": "Levante",
-          "score": "3 - 0",
-          "date": "2026-08-16T17:00:00Z"
+          "away": "Real Madrid",
+          "score": "1 - 2",
+          "date": "2026-08-22T19:30:00Z"
         }
       ]
     },
-    "AS Roma": {
-      "position": 13,
-      "points": 0,
-      "played": 0,
-      "recentMatches": []
-    },
-    "Fiorentina": {
-      "position": 11,
-      "points": 0,
-      "played": 0,
-      "recentMatches": []
-    },
-    "Fulham": {
-      "position": 12,
-      "points": 0,
-      "played": 0,
-      "recentMatches": []
-    },
-    "Chelsea": {
-      "position": 11,
-      "points": 0,
-      "played": 0,
-      "recentMatches": []
-    },
-    "Málaga": {
+    "Real Sociedad": {
       "position": 19,
       "points": 0,
       "played": 1,
       "recentMatches": [
         {
-          "home": "Atletico Madrid",
-          "away": "Malaga",
-          "score": "2 - 0",
-          "date": "2026-08-19T19:05:00Z"
+          "home": "Real Betis",
+          "away": "Real Sociedad",
+          "score": "1 - 0",
+          "date": "2026-08-21T19:00:00Z"
         }
       ]
-    },
-    "Deportivo La Coruña": {
-      "position": null,
-      "points": null,
-      "played": null,
-      "recentMatches": []
     }
   }
 }
