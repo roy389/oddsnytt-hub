@@ -1,0 +1,60 @@
+name: Generer dagens nyhetsartikkel (til godkjenning)
+on:
+  schedule:
+    # 10:00 UTC hver dag - senere enn oddstips (07:30 UTC), for bedre
+    # sjanse til at gårsdagens/dagens resultater er indeksert i søk
+    - cron: '0 10 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generer nyhetsartikkel
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-nyhetsartikkel.mjs
+
+      - name: Opprett branch og commit
+        id: commit
+        run: |
+          DATE=$(date -u +%Y-%m-%d)
+          BRANCH="nyheter/$DATE"
+          git config user.name "oddsnytt-nyheter-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Ingen ny artikkel generert i dag (fant trolig ikke noe godt nok grunnlag), avbryter."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git checkout -B "$BRANCH"
+          git add src/content/nyheter/
+          git commit -m "Ny nyhetsartikkel ($DATE)"
+          git push --force origin "$BRANCH"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+
+      - name: Opprett Pull Request
+        if: steps.commit.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Ny nyhetsartikkel (${{ steps.commit.outputs.date }}) - venter på godkjenning" \
+            --body "Automatisk generert og faktasjekket nyhetsartikkel. Les gjennom teksten før du merger - merge trigger publisering." \
+            --base main \
+            --head "${{ steps.commit.outputs.branch }}" || echo "PR finnes trolig allerede for denne branchen - sjekk Pull requests-fanen."
