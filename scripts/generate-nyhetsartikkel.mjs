@@ -3,7 +3,8 @@
 // alle idretter, inkludert e-sport og sjakk.
 //
 // Pipeline (alle steg må lykkes, ellers avbrytes uten å publisere noe):
-//   1. Research: Anthropic + web-søk finner 1-3 konkrete, aktuelle saker
+//   1. Research: Anthropic + web-søk (flere målrettede søk, ikke bare ett
+//      generelt) finner 1-3 konkrete, aktuelle saker
 //   2. Skriving: Anthropic skriver artikkel KUN basert på research-funnene
 //   3. Faktasjekk: konkrete påstander i artikkelen verifiseres på nytt mot
 //      uavhengig søk. Finner den noe som IKKE kan bekreftes -> avbryt.
@@ -105,22 +106,28 @@ async function research() {
   const today = new Date().toISOString().slice(0, 10);
   const data = await anthropicCall({
     maxTokens: 2048,
-    system: `Du er en research-assistent for en norsk sportsnettside. Du skal søke opp aktuelle, konkrete idrettsnyheter fra siste døgn - på tvers av ALLE idretter og idrettsgrener (fotball, tennis, håndball, langrenn, sykkel, friidrett, ski, sjakk, e-sport som CS/Counter-Strike, Dota 2, League of Legends, Valorant osv.), ikke bare fotball.
+    system: `Du er en research-assistent for en norsk sportsnettside. Du skal søke opp aktuelle, konkrete idrettsnyheter fra siste døgn - på tvers av ALLE idretter og idrettsgrener (fotball, tennis, håndball, langrenn, sykkel, friidrett, ski, sjakk, e-sport som CS/Counter-Strike, Dota 2, League of Legends, Valorant osv.).
+
+VIKTIG OM SØKESTRATEGI: Ikke stol på ett enkelt, bredt søk som "idrettsnyheter i dag" - slike søk gir ofte generiske oversikter og overser konkrete, aktuelle saker. Gjør heller FLERE spesifikke søk på tvers av ulike kategorier, for eksempel:
+- Norske fotballag i europeisk sammenheng (f.eks. "Bodø/Glimt Champions League i dag", "Viking Europa League resultat", "Brann Conference League")
+- Norske utøvere i internasjonale mesterskap eller turneringer, i ulike idretter
+- Store internasjonale turneringer/mesterskap som pågår akkurat nå, i ulike idretter (tennis Grand Slam, e-sport-turneringer, sykkelritt, osv.)
+- Generelle søk som et supplement, ikke som eneste kilde
 
 Finn 1-3 konkrete saker som:
 - Faktisk har skjedd de siste 24-48 timene
 - Har verifiserbare detaljer (navn, resultat, dato, sted)
 - Er interessante for norske lesere (norsk idrett, eller store internasjonale saker)
 
-Hvis du ikke finner noe substansielt og godt verifiserbart, si det tydelig i stedet for å presse fram noe tynt.`,
-    user: `Dagens dato: ${today}. Søk opp aktuelle idrettsnyheter fra siste døgn og oppsummer det du finner, med kilder.`,
+Hvis du etter FLERE ulike søk fortsatt ikke finner noe substansielt og godt verifiserbart, svar med KUN ordet "INGEN_SAK_FUNNET" og ingenting annet - ikke list opp eldre/fremtidige saker eller forklar hvorfor du ikke fant noe.`,
+    user: `Dagens dato: ${today}. Gjør flere målrettede søk (ikke bare ett generelt) og finn aktuelle idrettsnyheter fra siste døgn. Oppsummer det du finner, med kilder.`,
     tools: [{ type: "web_search_20250305", name: "web_search" }],
   });
 
   const textBlocks = data.content?.filter((c) => c.type === "text") ?? [];
   const summary = textBlocks.map((t) => t.text).join("\n\n").trim();
 
-  if (!summary || summary.length < 100) {
+  if (!summary || summary.includes("INGEN_SAK_FUNNET") || summary.length < 100) {
     return null;
   }
   return summary;
