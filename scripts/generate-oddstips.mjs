@@ -7,6 +7,8 @@
 //   - description: 140-160 tegn
 //   - reasoning per kamp: minst 300 tegn
 //   - bookmaker: må referere til en faktisk fil i src/content/bookmakere/
+//   - odds: må matche det FAKTISKE utfallet som anbefales (hjemme/uavgjort/
+//     borte), ikke alltid hjemmeoddsen uansett hva som anbefales
 //
 // VIKTIG: Skriver ALDRI om formkurve for lag med færre enn 2 spilte kamper i
 // inneværende sesong - da instrueres modellen til kun å forholde seg til odds,
@@ -31,7 +33,6 @@ if (!API_KEY) {
 const MODEL = process.env.ANTHROPIC_MODEL ?? "claude-sonnet-4-5-20250929";
 const MIN_PLAYED_FOR_FORM = 2;
 const NUM_MATCHES_TO_PICK = 3;
-// Må matche "slug" på en faktisk fil i src/content/bookmakere/
 const BOOKMAKER_SLUG = "betfriday";
 
 function formatFormNote(teamName, formData) {
@@ -89,7 +90,7 @@ ABSOLUTT FORBUD MOT FABRIKERTE FAKTA:
   - "description" MÅ være mellom 140 og 160 tegn, ikke mer, ikke mindre.
   - "reasoning" for HVER kamp MÅ være minst 300 tegn.
 
-For hver kamp skal du velge ETT tydelig marked å anbefale (f.eks. "Hjemmeseier (1)", "Borteseier (2)", "Uavgjort (X)") basert på oddsene og eventuell formdata, og gi en tillitsgrad (confidence) fra 1-5.`;
+For hver kamp skal du velge ETT tydelig marked å anbefale (f.eks. "Hjemmeseier (1)", "Borteseier (2)", "Uavgjort (X)") basert på oddsene og eventuell formdata, og gi en tillitsgrad (confidence) fra 1-5. Sørg for at begrunnelsen din ("reasoning") nevner riktig oddstall for akkurat det markedet du anbefaler.`;
 
   const userPrompt = `Dagens dato: ${dateStr}
 
@@ -124,12 +125,15 @@ Husk også: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnen
               home: { type: "string", description: "Må eksakt matche hjemmelagets navn fra konteksten" },
               away: { type: "string", description: "Må eksakt matche bortelagets navn fra konteksten" },
               league: { type: "string" },
-              market: { type: "string" },
+              market: {
+                type: "string",
+                description: "Anbefalt marked, MÅ være eksakt en av: 'Hjemmeseier (1)', 'Uavgjort (X)', 'Borteseier (2)'",
+              },
               confidence: { type: "integer", minimum: 1, maximum: 5 },
               reasoning: {
                 type: "string",
                 minLength: 300,
-                description: "Begrunnelse, MINST 300 tegn (strengt krav), kun basert på oppgitte fakta for NETTOPP DENNE kampen",
+                description: "Begrunnelse, MINST 300 tegn (strengt krav), kun basert på oppgitte fakta for NETTOPP DENNE kampen. Må nevne riktig oddstall for det anbefalte markedet.",
               },
             },
             required: ["home", "away", "league", "market", "confidence", "reasoning"],
@@ -170,12 +174,18 @@ Husk også: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnen
   return toolUse.input;
 }
 
-// Kobler AI-generert tekst til riktig kamp basert på lagnavn (IKKE indeks/rekkefølge).
 function findDraftMatch(draftMatches, originalMatch) {
   const norm = (s) => s?.toLowerCase().trim();
   return draftMatches.find(
     (d) => norm(d.home) === norm(originalMatch.home) && norm(d.away) === norm(originalMatch.away)
   );
+}
+
+function pickOddsForMarket(odds, market) {
+  const m = (market ?? "").toLowerCase();
+  if (m.includes("borteseier") || m.includes("(2)")) return odds.away;
+  if (m.includes("uavgjort") || m.includes("(x)")) return odds.draw;
+  return odds.home;
 }
 
 function validateLengths(draft) {
@@ -212,12 +222,13 @@ function buildFrontmatter(draft, matches, dateStr) {
         .split("\n")
         .map((line) => `      ${line}`)
         .join("\n");
+      const selectedOdds = pickOddsForMarket(m.odds, d.market);
       return `  - home: "${m.home}"
     away: "${m.away}"
     league: "${m.league}"
     kickoff: ${m.kickoff}
     market: "${d.market}"
-    odds: ${m.odds.home}
+    odds: ${selectedOdds}
     bookmaker: "${BOOKMAKER_SLUG}"
     confidence: ${d.confidence}
     reasoning: >-
