@@ -17,6 +17,11 @@
 // VIKTIG: AI-genererte kamper kobles sammen med de faktiske oddsdataene ved å
 // matche på lagnavn (home/away), IKKE på rekkefølge/indeks - dette forhindrer
 // at tekst fra én kamp ved en feil havner under en annen kamp i frontmatter.
+//
+// VIKTIG: Systempromten instruerer modellen til å VARIERE setningsstruktur,
+// konklusjonsformuleringer og avslutningstekst mellom artikler - unngår at
+// hver eneste artikkel har identisk, "templated" oppbygning og fraseologi,
+// som leser dårlig og signaliserer lavkvalitets/maskinelt innhold.
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 
@@ -90,6 +95,13 @@ ABSOLUTT FORBUD MOT FABRIKERTE FAKTA:
   - "description" MÅ være mellom 140 og 160 tegn, ikke mer, ikke mindre.
   - "reasoning" for HVER kamp MÅ være minst 300 tegn.
 
+VIKTIG OM VARIASJON - unngå "templated"/maskinell følelse:
+- IKKE bruk samme setningsoppbygning eller konklusjonsformulering i alle artikler. Varier hvordan du åpner og avslutter hver kamp-begrunnelse.
+- Unngå at hver eneste begrunnelse ender med en nesten identisk setning som "Vi anbefaler X til odds Y" - formuler konklusjonen forskjellig fra kamp til kamp og fra dag til dag (f.eks. noen ganger lede med konklusjonen, andre ganger bygge opp til den; variér ordvalg som "vi tror", "vi lener mot", "dette peker mot", "et naturlig valg blir").
+- Varier også "intro" og "outro" fra dag til dag - ikke bruk samme innledningssetning eller samme ansvarlig spill-formulering hver gang. Skriv den ansvarlig spill-påminnelsen i outro med egne ord hver gang, ikke en fast mal.
+- Unngå typiske overbrukte AI-fraser som "det er verdt å merke seg", "det er viktig å nevne", gjentatt fra artikkel til artikkel.
+- Varier hvilke aspekter du vektlegger (odds, tabellplassering, generell kontekst) i ulik rekkefølge og med ulik vekt fra kamp til kamp, i stedet for å følge samme faste struktur hver gang.
+
 For hver kamp skal du velge ETT tydelig marked å anbefale (f.eks. "Hjemmeseier (1)", "Borteseier (2)", "Uavgjort (X)") basert på oddsene og eventuell formdata, og gi en tillitsgrad (confidence) fra 1-5. Sørg for at begrunnelsen din ("reasoning") nevner riktig oddstall for akkurat det markedet du anbefaler.`;
 
   const userPrompt = `Dagens dato: ${dateStr}
@@ -100,7 +112,8 @@ ${contextBlock}
 
 Skriv dagens oddstips-artikkel for disse ${NUM_MATCHES_TO_PICK} kampene.
 Husk de strenge kravene: "description" mellom 140-160 tegn (tell nøye etter), og "reasoning" for hver kamp på minst 300 tegn.
-Husk også: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnene oppgitt over for akkurat den kampen.`;
+Husk også: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnene oppgitt over for akkurat den kampen.
+Husk å variere formuleringer, setningsoppbygning og konklusjoner - ikke skriv i en fast, gjenkjennelig mal.`;
 
   const toolSchema = {
     name: "publish_oddstips",
@@ -115,8 +128,14 @@ Husk også: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnen
           maxLength: 160,
           description: "Kort meta-beskrivelse, MÅ være mellom 140 og 160 tegn (strengt krav, tell etter)",
         },
-        intro: { type: "string", description: "Innledende avsnitt (brødtekst før matches-listen)" },
-        outro: { type: "string", description: "Avsluttende avsnitt med ansvarlig spill-påminnelse" },
+        intro: {
+          type: "string",
+          description: "Innledende avsnitt (brødtekst før matches-listen). Varier formulering og struktur fra tidligere artikler - ikke en fast mal.",
+        },
+        outro: {
+          type: "string",
+          description: "Avsluttende avsnitt med ansvarlig spill-påminnelse, formulert med egne ord - varier fra artikkel til artikkel, ikke en fast, gjentatt setning.",
+        },
         matches: {
           type: "array",
           items: {
@@ -133,7 +152,7 @@ Husk også: "home" og "away" i hvert matches-element må EKSAKT matche lagnavnen
               reasoning: {
                 type: "string",
                 minLength: 300,
-                description: "Begrunnelse, MINST 300 tegn (strengt krav), kun basert på oppgitte fakta for NETTOPP DENNE kampen. Må nevne riktig oddstall for det anbefalte markedet.",
+                description: "Begrunnelse, MINST 300 tegn (strengt krav), kun basert på oppgitte fakta for NETTOPP DENNE kampen. Må nevne riktig oddstall for det anbefalte markedet. Varier setningsoppbygning og konklusjonsformulering - unngå fast mal.",
               },
             },
             required: ["home", "away", "league", "market", "confidence", "reasoning"],
@@ -210,80 +229,4 @@ function validateLengths(draft) {
 function buildFrontmatter(draft, matches, dateStr) {
   validateLengths(draft);
 
-  const matchesYaml = matches
-    .map((m) => {
-      const d = findDraftMatch(draft.matches, m);
-      if (!d) {
-        throw new Error(
-          `Fant ikke AI-generert tekst for kampen ${m.home} - ${m.away}. Avbryter for å unngå feilkoblet innhold.`
-        );
-      }
-      const reasoningIndented = d.reasoning
-        .split("\n")
-        .map((line) => `      ${line}`)
-        .join("\n");
-      const selectedOdds = pickOddsForMarket(m.odds, d.market);
-      return `  - home: "${m.home}"
-    away: "${m.away}"
-    league: "${m.league}"
-    kickoff: ${m.kickoff}
-    market: "${d.market}"
-    odds: ${selectedOdds}
-    bookmaker: "${BOOKMAKER_SLUG}"
-    confidence: ${d.confidence}
-    reasoning: >-
-${reasoningIndented}`;
-    })
-    .join("\n");
-
-  return `---
-title: "${draft.title}"
-date: ${dateStr}
-sport: "fotball"
-description: "${draft.description}"
-matches:
-${matchesYaml}
----
-${draft.intro}
-
-${draft.outro}
-`;
-}
-
-async function main() {
-  const oddsData = JSON.parse(await readFile(ODDS_FILE, "utf-8"));
-  const formData = JSON.parse(
-    await readFile(FORM_FILE, "utf-8").catch(() => "{}")
-  );
-
-  const matches = pickTodaysMatches(oddsData);
-  if (matches.length === 0) {
-    console.log("Ingen kamper i dag - skriver ingen oddstips-artikkel.");
-    return;
-  }
-
-  const contextBlock = buildContextBlock(matches, formData);
-  console.log("Kontekst sendt til Anthropic:\n" + contextBlock);
-
-  const dateStr = new Date().toISOString().slice(0, 10);
-  console.log("\nGenererer artikkel via Anthropic...");
-  const draft = await callAnthropic(contextBlock, dateStr);
-
-  if (!draft.matches || draft.matches.length !== matches.length) {
-    throw new Error(
-      `Uventet antall kamper i respons: forventet ${matches.length}, fikk ${draft.matches?.length}`
-    );
-  }
-
-  const markdown = buildFrontmatter(draft, matches, dateStr);
-
-  await mkdir(OUTPUT_DIR, { recursive: true });
-  const outPath = `${OUTPUT_DIR}/dagens-oddstips-${dateStr}.md`;
-  await writeFile(outPath, markdown, "utf-8");
-  console.log(`\nSkrev artikkel til ${outPath}`);
-}
-
-main().catch((err) => {
-  console.error("Feil under generering av oddstips:", err);
-  process.exit(1);
-});
+  const
