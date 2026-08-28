@@ -1,30 +1,176 @@
 {
-  "generatedAt": "2026-08-26T09:02:02.552Z",
-  "date": "2026-08-26",
+  "generatedAt": "2026-08-28T09:14:27.130Z",
+  "date": "2026-08-28",
   "teams": {
-    "Real Madrid": {
-      "position": 7,
+    "Real Racing Club de Santander": {
+      "position": 12,
+      "points": 1,
+      "played": 2,
+      "recentMatches": [
+        {
+          "home": "Racing Santander",
+          "away": "Villarreal",
+          "score": "2 - 2",
+          "date": "2026-08-16T15:00:00Z"
+        },
+        {
+          "home": "Getafe",
+          "away": "Racing Santander",
+          "score": "1 - 0",
+          "date": "2026-08-23T17:30:00Z"
+        }
+      ]
+    },
+    "Elche CF": {
+      "position": 18,
+      "points": 1,
+      "played": 2,
+      "recentMatches": [
+        {
+          "home": "Deportivo A Coruña",
+          "away": "Elche",
+          "score": "1 - 1",
+          "date": "2026-08-17T19:00:00Z"
+        },
+        {
+          "home": "Elche",
+          "away": "Barcelona",
+          "score": "0 - 5",
+          "date": "2026-08-23T19:30:00Z"
+        }
+      ]
+    },
+    "Bayern Munich": {
+      "position": null,
+      "points": null,
+      "played": null,
+      "recentMatches": []
+    },
+    "VfB Stuttgart": {
+      "position": 17,
+      "points": 0,
+      "played": 0,
+      "recentMatches": []
+    },
+    "AC Milan": {
+      "position": 5,
       "points": 3,
       "played": 1,
       "recentMatches": [
         {
-          "home": "Espanyol",
-          "away": "Real Madrid",
+          "home": "Torino",
+          "away": "Milan",
           "score": "1 - 2",
-          "date": "2026-08-22T19:30:00Z"
+          "date": "2026-08-23T18:45:00Z"
         }
       ]
     },
-    "Real Sociedad": {
-      "position": 19,
+    "Venezia": {
+      "position": 18,
       "points": 0,
       "played": 1,
       "recentMatches": [
         {
-          "home": "Real Betis",
-          "away": "Real Sociedad",
-          "score": "1 - 0",
-          "date": "2026-08-21T19:00:00Z"
+          "home": "Venezia",
+          "away": "Lecce",
+          "score": "0 - 2",
+          "date": "2026-08-23T16:30:00Z"
+        }
+      ]
+    },
+    "Lille": {
+      "position": 3,
+      "points": 3,
+      "played": 1,
+      "recentMatches": [
+        {
+          "home": "Angers",
+          "away": "Lille",
+          "score": "0 - 2",
+          "date": "2026-08-23T13:00:00Z"
+        }
+      ]
+    },
+    "Paris Saint Germain": {
+      "position": 7,
+      "points": 1,
+      "played": 1,
+      "recentMatches": [
+        {
+          "home": "Troyes",
+          "away": "Paris FC",
+          "score": "0 - 0",
+          "date": "2026-08-22T18:45:00Z"
+        },
+        {
+          "home": "Rennes",
+          "away": "Paris Saint-Germain",
+          "score": "2 - 2",
+          "date": "2026-08-23T18:45:00Z"
+        }
+      ]
+    },
+    "Crystal Palace": {
+      "position": 16,
+      "points": 0,
+      "played": 1,
+      "recentMatches": [
+        {
+          "home": "Everton",
+          "away": "Crystal Palace",
+          "score": "2 - 0",
+          "date": "2026-08-22T14:00:00Z"
+        }
+      ]
+    },
+    "Manchester City": {
+      "position": 8,
+      "points": 3,
+      "played": 1,
+      "recentMatches": [
+        {
+          "home": "Manchester City",
+          "away": "AFC Bournemouth",
+          "score": "2 - 1",
+          "date": "2026-08-23T13:00:00Z"
+        }
+      ]
+    },
+    "Alavés": {
+      "position": 5,
+      "points": 4,
+      "played": 2,
+      "recentMatches": [
+        {
+          "home": "Deportivo Alavés",
+          "away": "Getafe",
+          "score": "3 - 0",
+          "date": "2026-08-15T17:30:00Z"
+        },
+        {
+          "home": "Rayo Vallecano",
+          "away": "Deportivo Alavés",
+          "score": "1 - 1",
+          "date": "2026-08-20T19:00:00Z"
+        }
+      ]
+    },
+    "Villarreal": {
+      "position": 10,
+      "points": 2,
+      "played": 2,
+      "recentMatches": [
+        {
+          "home": "Racing Santander",
+          "away": "Villarreal",
+          "score": "2 - 2",
+          "date": "2026-08-16T15:00:00Z"
+        },
+        {
+          "home": "Atlético Madrid",
+          "away": "Villarreal",
+          "score": "2 - 2",
+          "date": "2026-08-23T15:00:00Z"
         }
       ]
     }
