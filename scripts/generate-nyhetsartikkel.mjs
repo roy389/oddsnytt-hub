@@ -13,6 +13,13 @@
 //
 // Hvis research ikke finner noe substansielt og verifiserbart, avsluttes
 // scriptet uten å skrive noen fil - vi tvinger ikke fram en artikkel.
+//
+// VIKTIG (lagt til etter observerte falske positiver): verifyClaim() er
+// eksplisitt instruert til ALDRI å konkludere "contradicted" basert på egen
+// antagelse/forhåndskunnskap om hva som "virker sannsynlig" eller "burde
+// stemme" - kun basert på hva et faktisk søk finner. Modellen har en tendens
+// til å avvise ekte, nylige hendelser som "usannsynlige" fordi de føles
+// fremtidige/uventede for den, selv når søk bekrefter dem.
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 
@@ -266,10 +273,11 @@ async function verifyClaim(claim) {
       system: `Du er en faktasjekker. Søk opp og vurder om den oppgitte påstanden stemmer.
 
 VIKTIGE REGLER:
-1. "contradicted" skal KUN brukes når søket faktisk finner et annet, spesifikt faktum som motsier påstanden (f.eks. påstand sier "22 år", søk viser faktisk "25 år" - da er det contradicted).
-2. Hvis søket ikke finner nok informasjon til å bekrefte ELLER motsi påstanden, bruk "unverified" - IKKE "contradicted". Manglende informasjon er ikke det samme som motsigelse.
-3. Hvis søket faktisk støtter påstanden (tallene/navnene stemmer overens), bruk "confirmed".
-4. FØR du svarer: les gjennom din egen "note"-tekst og sjekk at "status"-feltet du velger faktisk stemmer logisk overens med det du skriver i "note". Hvis notatet ditt sier at noe stemmer, skal status være "confirmed", ikke "contradicted". Dette er kritisk - ikke send et internt motstridende svar.`,
+1. "contradicted" skal KUN brukes når SØKET DITT faktisk finner et konkret, annet faktum som motsier påstanden. Bruk ALDRI "contradicted" basert på egen antagelse om hva som "virker sannsynlig", "burde stemme basert på normal praksis", eller "er høyst usannsynlig gitt nivået/størrelsen/historikken" til noe/noen som er nevnt.
+2. Datoer og hendelser i påstanden kan omhandle noe som er nytt eller nylig for deg, selv om det føles fremtidig eller uventet. STOL PÅ SØKERESULTATENE, ikke på din egen antagelse om hva som "normalt" skjer eller hvilket år/sesong det "burde" være. Idrettslag kan oppnå uventede resultater; det er ikke i seg selv grunn til å avvise en påstand.
+3. Hvis søket ikke finner nok informasjon til å bekrefte ELLER motsi påstanden, bruk "unverified" - IKKE "contradicted". Manglende informasjon, eller informasjon som virker overraskende for deg, er ALDRI det samme som en bekreftet motsigelse.
+4. Hvis søket faktisk støtter påstanden (tallene/navnene/datoene stemmer overens med det pålitelige kilder sier), bruk "confirmed" - selv om resultatet virker overraskende, sensasjonelt eller uvanlig for deg.
+5. FØR du svarer: les gjennom din egen "note"-tekst og sjekk at "status"-feltet du velger faktisk stemmer logisk overens med det du skriver i "note". Hvis notatet ditt sier at noe stemmer, skal status være "confirmed", ikke "contradicted". Dette er kritisk - ikke send et internt motstridende svar.`,
       user: `Verifiser denne påstanden med et uavhengig søk: "${claim}"`,
       tools: [
         { type: "web_search_20250305", name: "web_search" },
