@@ -1,124 +1,7 @@
 {
-  "generatedAt": "2026-10-20T11:33:32.409Z",
+  "generatedAt": "2026-10-21T11:46:01.983Z",
   "source": "The Odds API (https://the-odds-api.com)",
   "matches": [
-    {
-      "id": "464c74a35c648d4910cc16976ce2f7cd",
-      "league": "UEFA Champions League",
-      "home": "Sabah FK",
-      "away": "Borussia Dortmund",
-      "kickoff": "2026-10-20T16:45:00Z",
-      "odds": {
-        "home": 11,
-        "draw": 6.4,
-        "away": 1.33
-      },
-      "bookmakerCount": 22
-    },
-    {
-      "id": "16e237246e9bef441e69998d1ef9536d",
-      "league": "UEFA Champions League",
-      "home": "Fenerbahce",
-      "away": "Slavia Praha",
-      "kickoff": "2026-10-20T16:45:00Z",
-      "odds": {
-        "home": 1.61,
-        "draw": 4.7,
-        "away": 5.8
-      },
-      "bookmakerCount": 22
-    },
-    {
-      "id": "00625830dd764a06f12f78c0d0a72ff8",
-      "league": "UEFA Champions League",
-      "home": "Manchester City",
-      "away": "AEK Athens",
-      "kickoff": "2026-10-20T19:00:00Z",
-      "odds": {
-        "home": 1.16,
-        "draw": 12,
-        "away": 25
-      },
-      "bookmakerCount": 22
-    },
-    {
-      "id": "e3b50e57c4cf46191ab068d1e880e595",
-      "league": "UEFA Champions League",
-      "home": "AS Roma",
-      "away": "ŠK Slovan Bratislava",
-      "kickoff": "2026-10-20T19:00:00Z",
-      "odds": {
-        "home": 1.16,
-        "draw": 10.9,
-        "away": 28
-      },
-      "bookmakerCount": 22
-    },
-    {
-      "id": "56989e10c299aba1a0fce210bb214775",
-      "league": "UEFA Champions League",
-      "home": "VfB Stuttgart",
-      "away": "Atlético Madrid",
-      "kickoff": "2026-10-20T19:00:00Z",
-      "odds": {
-        "home": 3.5,
-        "draw": 4,
-        "away": 2.14
-      },
-      "bookmakerCount": 22
-    },
-    {
-      "id": "46b790335fa98338b7e1ed0b614078fb",
-      "league": "UEFA Champions League",
-      "home": "Paris Saint Germain",
-      "away": "Barcelona",
-      "kickoff": "2026-10-20T19:00:00Z",
-      "odds": {
-        "home": 2.6,
-        "draw": 4.51,
-        "away": 2.52
-      },
-      "bookmakerCount": 22
-    },
-    {
-      "id": "49dba87d5ac664efdf2a64c72db31702",
-      "league": "UEFA Champions League",
-      "home": "Napoli",
-      "away": "Bodø/Glimt",
-      "kickoff": "2026-10-20T19:00:00Z",
-      "odds": {
-        "home": 1.82,
-        "draw": 4.21,
-        "away": 4.8
-      },
-      "bookmakerCount": 22
-    },
-    {
-      "id": "b9567e9c3df909f8f6f21425b4b38d3f",
-      "league": "UEFA Champions League",
-      "home": "Liverpool",
-      "away": "Villarreal",
-      "kickoff": "2026-10-20T19:00:00Z",
-      "odds": {
-        "home": 1.54,
-        "draw": 4.92,
-        "away": 6.6
-      },
-      "bookmakerCount": 22
-    },
-    {
-      "id": "0686ce05e8489734fd66e5ee97fbbfa2",
-      "league": "UEFA Champions League",
-      "home": "Porto",
-      "away": "PSV Eindhoven",
-      "kickoff": "2026-10-20T19:00:00Z",
-      "odds": {
-        "home": 1.57,
-        "draw": 4.8,
-        "away": 6.2
-      },
-      "bookmakerCount": 22
-    },
     {
       "id": "8af9379136075f45b290208b35a706c8",
       "league": "UEFA Champions League",
@@ -126,9 +9,9 @@
       "away": "Manchester United",
       "kickoff": "2026-10-21T16:45:00Z",
       "odds": {
-        "home": 2.33,
-        "draw": 3.9,
-        "away": 3.2
+        "home": 2.46,
+        "draw": 3.95,
+        "away": 2.95
       },
       "bookmakerCount": 22
     },
@@ -139,9 +22,9 @@
       "away": "Galatasaray",
       "kickoff": "2026-10-21T16:45:00Z",
       "odds": {
-        "home": 2.3,
-        "draw": 3.85,
-        "away": 3.27
+        "home": 2.32,
+        "draw": 3.8,
+        "away": 3.25
       },
       "bookmakerCount": 22
     },
@@ -152,9 +35,9 @@
       "away": "Athletic Bilbao",
       "kickoff": "2026-10-21T18:00:00Z",
       "odds": {
-        "home": 3.81,
-        "draw": 3.52,
-        "away": 2.24
+        "home": 3.85,
+        "draw": 3.45,
+        "away": 2.2
       },
       "bookmakerCount": 21
     },
@@ -165,9 +48,9 @@
       "away": "Arsenal",
       "kickoff": "2026-10-21T19:00:00Z",
       "odds": {
-        "home": 2.13,
-        "draw": 4,
-        "away": 3.6
+        "home": 2.32,
+        "draw": 3.9,
+        "away": 3.2
       },
       "bookmakerCount": 22
     },
@@ -178,9 +61,9 @@
       "away": "Viking FK",
       "kickoff": "2026-10-21T19:00:00Z",
       "odds": {
-        "home": 1.26,
-        "draw": 7.4,
-        "away": 14
+        "home": 1.27,
+        "draw": 7.14,
+        "away": 12.9
       },
       "bookmakerCount": 22
     },
@@ -191,9 +74,9 @@
       "away": "RC Lens",
       "kickoff": "2026-10-21T19:00:00Z",
       "odds": {
-        "home": 2.1,
-        "draw": 4.2,
-        "away": 3.5
+        "home": 1.97,
+        "draw": 4.4,
+        "away": 3.8
       },
       "bookmakerCount": 22
     },
@@ -204,9 +87,9 @@
       "away": "Feyenoord",
       "kickoff": "2026-10-21T19:00:00Z",
       "odds": {
-        "home": 1.61,
-        "draw": 5,
-        "away": 5.5
+        "home": 1.7,
+        "draw": 4.7,
+        "away": 4.9
       },
       "bookmakerCount": 22
     },
@@ -217,9 +100,9 @@
       "away": "Shakhtar Donetsk",
       "kickoff": "2026-10-21T19:00:00Z",
       "odds": {
-        "home": 1.24,
+        "home": 1.26,
         "draw": 8,
-        "away": 15
+        "away": 14
       },
       "bookmakerCount": 22
     },
@@ -230,9 +113,9 @@
       "away": "LASK",
       "kickoff": "2026-10-21T19:00:00Z",
       "odds": {
-        "home": 1.23,
-        "draw": 8.6,
-        "away": 13.5
+        "home": 1.3,
+        "draw": 7,
+        "away": 11
       },
       "bookmakerCount": 22
     },
@@ -243,9 +126,9 @@
       "away": "RB Leipzig",
       "kickoff": "2026-10-21T19:00:00Z",
       "odds": {
-        "home": 1.29,
-        "draw": 7.75,
-        "away": 11.5
+        "home": 1.27,
+        "draw": 8,
+        "away": 12
       },
       "bookmakerCount": 22
     },
@@ -256,9 +139,9 @@
       "away": "AZ Alkmaar",
       "kickoff": "2026-10-22T16:45:00Z",
       "odds": {
-        "home": 6.5,
-        "draw": 4.65,
-        "away": 1.56
+        "home": 6.4,
+        "draw": 4.7,
+        "away": 1.59
       },
       "bookmakerCount": 20
     },
@@ -270,7 +153,7 @@
       "kickoff": "2026-10-22T16:45:00Z",
       "odds": {
         "home": 13,
-        "draw": 7.6,
+        "draw": 7.4,
         "away": 1.26
       },
       "bookmakerCount": 20
@@ -282,8 +165,8 @@
       "away": "NEC Nijmegen",
       "kickoff": "2026-10-22T16:45:00Z",
       "odds": {
-        "home": 1.71,
-        "draw": 4.4,
+        "home": 1.69,
+        "draw": 4.5,
         "away": 5.1
       },
       "bookmakerCount": 20
@@ -295,9 +178,9 @@
       "away": "Torreense",
       "kickoff": "2026-10-22T16:45:00Z",
       "odds": {
-        "home": 1.41,
-        "draw": 5.4,
-        "away": 9.4
+        "home": 1.38,
+        "draw": 5.6,
+        "away": 10
       },
       "bookmakerCount": 20
     },
@@ -308,9 +191,9 @@
       "away": "Hapoel Be'er Sheva",
       "kickoff": "2026-10-22T16:45:00Z",
       "odds": {
-        "home": 1.35,
-        "draw": 5.9,
-        "away": 10
+        "home": 1.39,
+        "draw": 5.75,
+        "away": 9.6
       },
       "bookmakerCount": 20
     },
@@ -322,7 +205,7 @@
       "kickoff": "2026-10-22T16:45:00Z",
       "odds": {
         "home": 1.61,
-        "draw": 4.5,
+        "draw": 4.44,
         "away": 6.2
       },
       "bookmakerCount": 20
@@ -334,9 +217,9 @@
       "away": "Sunderland",
       "kickoff": "2026-10-22T16:45:00Z",
       "odds": {
-        "home": 5.2,
-        "draw": 4.21,
-        "away": 1.75
+        "home": 5.4,
+        "draw": 4.3,
+        "away": 1.74
       },
       "bookmakerCount": 20
     },
@@ -349,7 +232,7 @@
       "odds": {
         "home": 3.8,
         "draw": 3.85,
-        "away": 2.09
+        "away": 2.1
       },
       "bookmakerCount": 20
     },
@@ -360,9 +243,9 @@
       "away": "AC Milan",
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
-        "home": 2.25,
-        "draw": 3.75,
-        "away": 3.35
+        "home": 2.15,
+        "draw": 3.85,
+        "away": 3.7
       },
       "bookmakerCount": 20
     },
@@ -375,7 +258,7 @@
       "odds": {
         "home": 3.15,
         "draw": 3.67,
-        "away": 2.42
+        "away": 2.38
       },
       "bookmakerCount": 20
     },
@@ -386,9 +269,9 @@
       "away": "Benfica",
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
-        "home": 8.5,
-        "draw": 5.5,
-        "away": 1.42
+        "home": 8.8,
+        "draw": 5.6,
+        "away": 1.41
       },
       "bookmakerCount": 20
     },
@@ -399,8 +282,8 @@
       "away": "Crystal Palace",
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
-        "home": 2.16,
-        "draw": 4,
+        "home": 2.22,
+        "draw": 3.95,
         "away": 3.35
       },
       "bookmakerCount": 20
@@ -412,9 +295,9 @@
       "away": "Celta Vigo",
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
-        "home": 2.75,
-        "draw": 3.6,
-        "away": 2.72
+        "home": 2.8,
+        "draw": 3.65,
+        "away": 2.7
       },
       "bookmakerCount": 20
     },
@@ -425,8 +308,8 @@
       "away": "Real Sociedad",
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
-        "home": 6.8,
-        "draw": 4.9,
+        "home": 6.5,
+        "draw": 4.8,
         "away": 1.55
       },
       "bookmakerCount": 20
@@ -439,8 +322,8 @@
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
         "home": 2.12,
-        "draw": 4.1,
-        "away": 3.5
+        "draw": 4.2,
+        "away": 3.45
       },
       "bookmakerCount": 20
     },
@@ -451,9 +334,9 @@
       "away": "Salzburg",
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
-        "home": 5.3,
-        "draw": 4.3,
-        "away": 1.72
+        "home": 6,
+        "draw": 4.6,
+        "away": 1.64
       },
       "bookmakerCount": 20
     },
@@ -464,9 +347,9 @@
       "away": "Sparta Prague",
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
-        "home": 1.54,
+        "home": 1.55,
         "draw": 4.7,
-        "away": 7
+        "away": 6.8
       },
       "bookmakerCount": 20
     },
@@ -478,7 +361,7 @@
       "kickoff": "2026-10-22T19:00:00Z",
       "odds": {
         "home": 1.85,
-        "draw": 4.05,
+        "draw": 4,
         "away": 4.6
       },
       "bookmakerCount": 20
@@ -492,7 +375,7 @@
       "odds": {
         "home": 1.43,
         "draw": 6,
-        "away": 7.75
+        "away": 7.6
       },
       "bookmakerCount": 23
     },
@@ -503,11 +386,11 @@
       "away": "Monza",
       "kickoff": "2026-10-23T18:45:00Z",
       "odds": {
-        "home": 2.22,
+        "home": 2.26,
         "draw": 3.6,
-        "away": 3.6
+        "away": 3.65
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "8aa36b30d655d6c81ed98bf9ec1b4039",
@@ -516,11 +399,11 @@
       "away": "Nice",
       "kickoff": "2026-10-23T18:45:00Z",
       "odds": {
-        "home": 2.31,
-        "draw": 3.75,
-        "away": 3.47
+        "home": 2.32,
+        "draw": 3.65,
+        "away": 3.37
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 22
     },
     {
       "id": "d0202960708a442401d7fc7bd74a0183",
@@ -529,11 +412,11 @@
       "away": "Nottingham Forest",
       "kickoff": "2026-10-23T19:00:00Z",
       "odds": {
-        "home": 3.25,
+        "home": 3.35,
         "draw": 3.65,
-        "away": 2.42
+        "away": 2.35
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "903eb4941471ffe20d525b02dd3b77aa",
@@ -543,8 +426,8 @@
       "kickoff": "2026-10-23T19:00:00Z",
       "odds": {
         "home": 1.84,
-        "draw": 3.8,
-        "away": 5.3
+        "draw": 3.85,
+        "away": 5.4
       },
       "bookmakerCount": 21
     },
@@ -556,8 +439,8 @@
       "kickoff": "2026-10-24T11:30:00Z",
       "odds": {
         "home": 4.72,
-        "draw": 4.4,
-        "away": 1.77
+        "draw": 4.5,
+        "away": 1.76
       },
       "bookmakerCount": 24
     },
@@ -570,9 +453,9 @@
       "odds": {
         "home": 1.81,
         "draw": 3.94,
-        "away": 4.78
+        "away": 4.9
       },
-      "bookmakerCount": 20
+      "bookmakerCount": 21
     },
     {
       "id": "b7f0880e3da978f9481f7cb5697e2aa5",
@@ -582,10 +465,10 @@
       "kickoff": "2026-10-24T13:00:00Z",
       "odds": {
         "home": 3.35,
-        "draw": 3.2,
-        "away": 2.55
+        "draw": 3.25,
+        "away": 2.56
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "08ffd99b2249c81d8a7410598f32b9b0",
@@ -594,11 +477,11 @@
       "away": "Sassuolo",
       "kickoff": "2026-10-24T13:00:00Z",
       "odds": {
-        "home": 1.5,
-        "draw": 5,
-        "away": 7.1
+        "home": 1.6,
+        "draw": 4.75,
+        "away": 6.4
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "983440c6e348b558c6a3e10e2061ba55",
@@ -609,7 +492,7 @@
       "odds": {
         "home": 2.12,
         "draw": 4,
-        "away": 3.7
+        "away": 3.65
       },
       "bookmakerCount": 23
     },
@@ -620,8 +503,8 @@
       "away": "Union Berlin",
       "kickoff": "2026-10-24T13:30:00Z",
       "odds": {
-        "home": 1.91,
-        "draw": 4.21,
+        "home": 1.9,
+        "draw": 4.26,
         "away": 4.2
       },
       "bookmakerCount": 23
@@ -634,7 +517,7 @@
       "kickoff": "2026-10-24T13:30:00Z",
       "odds": {
         "home": 1.43,
-        "draw": 5.8,
+        "draw": 6,
         "away": 7.5
       },
       "bookmakerCount": 23
@@ -650,7 +533,7 @@
         "draw": 4.33,
         "away": 4.6
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 22
     },
     {
       "id": "7630f897583f3acc0f483fa2d17d1ac5",
@@ -672,11 +555,11 @@
       "away": "Everton",
       "kickoff": "2026-10-24T14:00:00Z",
       "odds": {
-        "home": 1.43,
-        "draw": 5.1,
-        "away": 9.8
+        "home": 1.46,
+        "draw": 5,
+        "away": 9.6
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "0fbb2626ed9534b9dcf21d16925f9bd7",
@@ -685,11 +568,11 @@
       "away": "Fulham",
       "kickoff": "2026-10-24T14:00:00Z",
       "odds": {
-        "home": 3.12,
+        "home": 3.2,
         "draw": 3.7,
-        "away": 2.48
+        "away": 2.43
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "ad9476e822e7ac24ee51f420dd07f3c9",
@@ -698,11 +581,11 @@
       "away": "Vålerenga",
       "kickoff": "2026-10-24T14:00:00Z",
       "odds": {
-        "home": 1.16,
-        "draw": 10.7,
+        "home": 1.17,
+        "draw": 10.3,
         "away": 19
       },
-      "bookmakerCount": 18
+      "bookmakerCount": 20
     },
     {
       "id": "5960b1b6c20acfd78e78764fed47d505",
@@ -711,11 +594,11 @@
       "away": "Espanyol",
       "kickoff": "2026-10-24T14:15:00Z",
       "odds": {
-        "home": 2.57,
-        "draw": 3.71,
-        "away": 2.98
+        "home": 2.5,
+        "draw": 3.76,
+        "away": 3
       },
-      "bookmakerCount": 19
+      "bookmakerCount": 20
     },
     {
       "id": "0bbce95e5764e706e6c428bb52dc5536",
@@ -725,10 +608,10 @@
       "kickoff": "2026-10-24T15:15:00Z",
       "odds": {
         "home": 1.71,
-        "draw": 4.4,
-        "away": 5.2
+        "draw": 4.3,
+        "away": 5.3
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 7
     },
     {
       "id": "0b4894e9fb123ef3045269f97e339eba",
@@ -738,10 +621,10 @@
       "kickoff": "2026-10-24T16:00:00Z",
       "odds": {
         "home": 2.95,
-        "draw": 3.54,
+        "draw": 3.55,
         "away": 2.62
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "761f32298323d740260644fe7e966f87",
@@ -751,10 +634,10 @@
       "kickoff": "2026-10-24T16:00:00Z",
       "odds": {
         "home": 5.3,
-        "draw": 4.31,
+        "draw": 4.4,
         "away": 1.65
       },
-      "bookmakerCount": 19
+      "bookmakerCount": 20
     },
     {
       "id": "0382a9faef0bb8df1bcc436536cffb05",
@@ -764,10 +647,10 @@
       "kickoff": "2026-10-24T16:30:00Z",
       "odds": {
         "home": 1.76,
-        "draw": 4.55,
+        "draw": 4.65,
         "away": 4.7
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "0dae715cc56fe201f9e667917c126691",
@@ -776,11 +659,11 @@
       "away": "Villarreal",
       "kickoff": "2026-10-24T16:30:00Z",
       "odds": {
-        "home": 3.45,
+        "home": 3.5,
         "draw": 3.78,
-        "away": 2.28
+        "away": 2.24
       },
-      "bookmakerCount": 20
+      "bookmakerCount": 21
     },
     {
       "id": "3ed4d1e775910625c50518a384e9c547",
@@ -789,9 +672,9 @@
       "away": "Eintracht Frankfurt",
       "kickoff": "2026-10-24T16:30:00Z",
       "odds": {
-        "home": 1.5,
-        "draw": 5.4,
-        "away": 6.75
+        "home": 1.51,
+        "draw": 5.39,
+        "away": 6.42
       },
       "bookmakerCount": 23
     },
@@ -802,11 +685,11 @@
       "away": "Parma",
       "kickoff": "2026-10-24T18:45:00Z",
       "odds": {
-        "home": 1.53,
-        "draw": 4.58,
-        "away": 8.6
+        "home": 1.48,
+        "draw": 4.71,
+        "away": 9.4
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "fc6c50376190b578cfeb38c029db8487",
@@ -819,7 +702,7 @@
         "draw": 3.9,
         "away": 3.02
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 22
     },
     {
       "id": "70df1835c3b5ddff1c99e0189532136b",
@@ -828,11 +711,11 @@
       "away": "Deportivo La Coruña",
       "kickoff": "2026-10-24T19:00:00Z",
       "odds": {
-        "home": 1.31,
-        "draw": 6.48,
-        "away": 12.5
+        "home": 1.32,
+        "draw": 6.5,
+        "away": 13
       },
-      "bookmakerCount": 18
+      "bookmakerCount": 19
     },
     {
       "id": "c9b6c7048d8dc33dae618f67f462f67a",
@@ -842,10 +725,10 @@
       "kickoff": "2026-10-25T11:30:00Z",
       "odds": {
         "home": 1.41,
-        "draw": 5.9,
-        "away": 8.5
+        "draw": 5.8,
+        "away": 8.8
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "9c4254cba9944a839b421db27260504d",
@@ -854,11 +737,11 @@
       "away": "Getafe",
       "kickoff": "2026-10-25T13:00:00Z",
       "odds": {
-        "home": 1.7,
+        "home": 1.67,
         "draw": 4.2,
-        "away": 6.1
+        "away": 6.25
       },
-      "bookmakerCount": 20
+      "bookmakerCount": 21
     },
     {
       "id": "3fc5bd8453a2db406c2a901ccd3cd3c9",
@@ -880,11 +763,11 @@
       "away": "Bournemouth",
       "kickoff": "2026-10-25T14:00:00Z",
       "odds": {
-        "home": 1.94,
-        "draw": 4.1,
-        "away": 4.1
+        "home": 1.96,
+        "draw": 4.05,
+        "away": 4.07
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "69493b5ebb84f24ab1d6023a30ee89f0",
@@ -893,11 +776,11 @@
       "away": "Brentford",
       "kickoff": "2026-10-25T14:00:00Z",
       "odds": {
-        "home": 4.75,
-        "draw": 4.1,
-        "away": 1.84
+        "home": 5,
+        "draw": 4.11,
+        "away": 1.79
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "290ba8cd3f3a2e9252effca673bf5549",
@@ -906,11 +789,11 @@
       "away": "Brighton and Hove Albion",
       "kickoff": "2026-10-25T14:00:00Z",
       "odds": {
-        "home": 2.24,
-        "draw": 3.98,
-        "away": 3.34
+        "home": 2.2,
+        "draw": 4,
+        "away": 3.3
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "fe235b26408c477368c40672a4488694",
@@ -921,9 +804,9 @@
       "odds": {
         "home": 3.02,
         "draw": 3.75,
-        "away": 2.44
+        "away": 2.46
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "63aa6e3f679ee4c68de5b4bd8d3361bb",
@@ -932,11 +815,11 @@
       "away": "Frosinone",
       "kickoff": "2026-10-25T14:00:00Z",
       "odds": {
-        "home": 1.83,
+        "home": 1.84,
         "draw": 4.4,
-        "away": 4.5
+        "away": 4.37
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "95cfaecfe96bb7ced1fb6af974a4110b",
@@ -945,11 +828,11 @@
       "away": "Venezia",
       "kickoff": "2026-10-25T14:00:00Z",
       "odds": {
-        "home": 2.16,
+        "home": 2.18,
         "draw": 3.55,
         "away": 3.95
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "c177a3c900d7febf9870ca8de90a9e35",
@@ -959,10 +842,10 @@
       "kickoff": "2026-10-25T14:00:00Z",
       "odds": {
         "home": 2.22,
-        "draw": 3.6,
-        "away": 3.87
+        "draw": 3.55,
+        "away": 3.83
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 22
     },
     {
       "id": "2fd479cbb110c8f057e363bb06195f2b",
@@ -971,9 +854,9 @@
       "away": "Bayer Leverkusen",
       "kickoff": "2026-10-25T14:30:00Z",
       "odds": {
-        "home": 2.8,
+        "home": 2.88,
         "draw": 4.25,
-        "away": 2.48
+        "away": 2.42
       },
       "bookmakerCount": 23
     },
@@ -985,10 +868,10 @@
       "kickoff": "2026-10-25T15:15:00Z",
       "odds": {
         "home": 2.86,
-        "draw": 3.57,
+        "draw": 3.6,
         "away": 2.67
       },
-      "bookmakerCount": 20
+      "bookmakerCount": 21
     },
     {
       "id": "626308a47a9c72e12211b32dd6fdaf48",
@@ -997,7 +880,7 @@
       "away": "Aalesund",
       "kickoff": "2026-10-25T16:00:00Z",
       "odds": {
-        "home": 1.9,
+        "home": 1.88,
         "draw": 4.2,
         "away": 4.1
       },
@@ -1038,7 +921,7 @@
       "odds": {
         "home": 2.38,
         "draw": 3.9,
-        "away": 2.95
+        "away": 2.88
       },
       "bookmakerCount": 19
     },
@@ -1049,11 +932,11 @@
       "away": "Lorient",
       "kickoff": "2026-10-25T16:15:00Z",
       "odds": {
-        "home": 2.97,
-        "draw": 3.5,
-        "away": 2.63
+        "home": 3.2,
+        "draw": 3.4,
+        "away": 2.55
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 22
     },
     {
       "id": "8eab078a37a63df32ffa443302a2a7ba",
@@ -1062,11 +945,11 @@
       "away": "Le Mans FC",
       "kickoff": "2026-10-25T16:15:00Z",
       "odds": {
-        "home": 2.25,
-        "draw": 3.85,
-        "away": 3.4
+        "home": 2.23,
+        "draw": 3.76,
+        "away": 3.45
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 22
     },
     {
       "id": "fcc34b753fc61a0cc0e11d7cb0a0c36b",
@@ -1075,11 +958,11 @@
       "away": "Le Havre",
       "kickoff": "2026-10-25T16:15:00Z",
       "odds": {
-        "home": 1.64,
+        "home": 1.61,
         "draw": 4.89,
-        "away": 5.65
+        "away": 5.55
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 22
     },
     {
       "id": "31dcb6d13ed240fc4a5c7a696149967e",
@@ -1088,11 +971,24 @@
       "away": "Strasbourg",
       "kickoff": "2026-10-25T16:15:00Z",
       "odds": {
-        "home": 1.81,
+        "home": 1.82,
         "draw": 4.5,
         "away": 4.36
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 22
+    },
+    {
+      "id": "18e4425261f7dd6b245f82056d424411",
+      "league": "Ligue 1 - France",
+      "home": "Toulouse",
+      "away": "Troyes",
+      "kickoff": "2026-10-25T16:15:00Z",
+      "odds": {
+        "home": 1.69,
+        "draw": 4.4,
+        "away": 5.22
+      },
+      "bookmakerCount": 16
     },
     {
       "id": "e82f6b60fa41b82c8510f5b67ce61849",
@@ -1101,11 +997,11 @@
       "away": "Leeds United",
       "kickoff": "2026-10-25T16:30:00Z",
       "odds": {
-        "home": 3.1,
-        "draw": 3.44,
-        "away": 2.63
+        "home": 3.2,
+        "draw": 3.36,
+        "away": 2.57
       },
-      "bookmakerCount": 24
+      "bookmakerCount": 25
     },
     {
       "id": "f2bd909f25eea6b4ce42d2f52275e5c4",
@@ -1114,7 +1010,7 @@
       "away": "Bayern Munich",
       "kickoff": "2026-10-25T16:30:00Z",
       "odds": {
-        "home": 7.5,
+        "home": 7.25,
         "draw": 6.12,
         "away": 1.42
       },
@@ -1131,7 +1027,7 @@
         "draw": 4.6,
         "away": 1.5
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "3cb8660cd2375b60e81144a7572cfb89",
@@ -1140,11 +1036,11 @@
       "away": "Levante",
       "kickoff": "2026-10-25T17:30:00Z",
       "odds": {
-        "home": 1.78,
+        "home": 1.77,
         "draw": 4.26,
         "away": 4.72
       },
-      "bookmakerCount": 20
+      "bookmakerCount": 21
     },
     {
       "id": "2d33e4e857a63591ab4077d107b72922",
@@ -1168,9 +1064,9 @@
       "odds": {
         "home": 5.8,
         "draw": 4.17,
-        "away": 1.73
+        "away": 1.7
       },
-      "bookmakerCount": 23
+      "bookmakerCount": 24
     },
     {
       "id": "8664b2167f22c59026d86615421463b1",
@@ -1179,11 +1075,11 @@
       "away": "Lyon",
       "kickoff": "2026-10-25T19:45:00Z",
       "odds": {
-        "home": 1.43,
-        "draw": 6.1,
-        "away": 8.2
+        "home": 1.47,
+        "draw": 5.41,
+        "away": 6.88
       },
-      "bookmakerCount": 21
+      "bookmakerCount": 22
     },
     {
       "id": "72089d103a5fe6a922c35e17efba6ffc",
@@ -1192,9 +1088,9 @@
       "away": "Real Madrid",
       "kickoff": "2026-10-25T20:00:00Z",
       "odds": {
-        "home": 1.62,
-        "draw": 6,
-        "away": 4.78
+        "home": 1.64,
+        "draw": 6.2,
+        "away": 4.52
       },
       "bookmakerCount": 21
     },
@@ -1207,9 +1103,9 @@
       "odds": {
         "home": 2.02,
         "draw": 3.6,
-        "away": 4.3
+        "away": 4.4
       },
-      "bookmakerCount": 19
+      "bookmakerCount": 21
     },
     {
       "id": "c7445242bf16a8f37afef7863af45a78",
@@ -1222,7 +1118,7 @@
         "draw": 3.55,
         "away": 2.53
       },
-      "bookmakerCount": 17
+      "bookmakerCount": 20
     },
     {
       "id": "7eecf109ae6a5f87441a79b0e4111982",
@@ -1235,7 +1131,7 @@
         "draw": 5.2,
         "away": 10
       },
-      "bookmakerCount": 17
+      "bookmakerCount": 21
     },
     {
       "id": "7d989a0a7bae47eb957731e97c5bd9c1",
@@ -1244,11 +1140,11 @@
       "away": "Como",
       "kickoff": "2026-10-27T19:45:00Z",
       "odds": {
-        "home": 4.89,
+        "home": 5,
         "draw": 3.9,
-        "away": 1.88
+        "away": 1.83
       },
-      "bookmakerCount": 17
+      "bookmakerCount": 20
     },
     {
       "id": "3d0b0fbec194258530882514714c74be",
@@ -1261,7 +1157,7 @@
         "draw": 4.28,
         "away": 5.71
       },
-      "bookmakerCount": 16
+      "bookmakerCount": 17
     },
     {
       "id": "33320ad169692216a91dec030e7ef6a6",
@@ -1274,7 +1170,7 @@
         "draw": 6.28,
         "away": 1.35
       },
-      "bookmakerCount": 16
+      "bookmakerCount": 17
     },
     {
       "id": "482c18a8081afdfa310324fa8f37e95a",
@@ -1287,7 +1183,7 @@
         "draw": 3.4,
         "away": 2.5
       },
-      "bookmakerCount": 16
+      "bookmakerCount": 17
     },
     {
       "id": "34848497b90b1392f6a767fc183d3ac1",
@@ -1300,7 +1196,7 @@
         "draw": 4.01,
         "away": 1.7
       },
-      "bookmakerCount": 16
+      "bookmakerCount": 17
     },
     {
       "id": "abec89862e33762414fcb8b2232aba08",
@@ -1309,11 +1205,11 @@
       "away": "Napoli",
       "kickoff": "2026-10-28T19:45:00Z",
       "odds": {
-        "home": 4.3,
-        "draw": 3.95,
-        "away": 1.9
+        "home": 4.01,
+        "draw": 3.92,
+        "away": 1.96
       },
-      "bookmakerCount": 16
+      "bookmakerCount": 17
     },
     {
       "id": "667cf69986b200753742c90cb9c5126c",
@@ -1324,9 +1220,9 @@
       "odds": {
         "home": 2.01,
         "draw": 3.95,
-        "away": 3.93
+        "away": 3.88
       },
-      "bookmakerCount": 16
+      "bookmakerCount": 17
     },
     {
       "id": "da159a6b84dbb548b4d7b94c722caac5",
@@ -1339,7 +1235,7 @@
         "draw": 3.69,
         "away": 3.1
       },
-      "bookmakerCount": 16
+      "bookmakerCount": 17
     },
     {
       "id": "9a9f6c78276f74f15f42b013b033aa5d",
@@ -1348,8 +1244,8 @@
       "away": "Paris Saint Germain",
       "kickoff": "2026-10-30T18:00:00Z",
       "odds": {
-        "home": 11.5,
-        "draw": 7.11,
+        "home": 12,
+        "draw": 7.2,
         "away": 1.28
       },
       "bookmakerCount": 17
@@ -1361,11 +1257,11 @@
       "away": "FSV Mainz 05",
       "kickoff": "2026-10-30T19:30:00Z",
       "odds": {
-        "home": 3.4,
+        "home": 3.5,
         "draw": 4.07,
-        "away": 2.13
+        "away": 2.23
       },
-      "bookmakerCount": 12
+      "bookmakerCount": 16
     },
     {
       "id": "00b03cb40c27ed23e2ecb18f062a5122",
@@ -1376,9 +1272,9 @@
       "odds": {
         "home": 1.6,
         "draw": 4.62,
-        "away": 5.7
+        "away": 5.75
       },
-      "bookmakerCount": 11
+      "bookmakerCount": 15
     },
     {
       "id": "7932d9a82dcdb164a3e4ef5e03694ee3",
@@ -1413,11 +1309,11 @@
       "away": "Atlético Madrid",
       "kickoff": "2026-10-31T13:00:00Z",
       "odds": {
-        "home": 6.5,
-        "draw": 4.78,
-        "away": 1.56
+        "home": 5.45,
+        "draw": 4.66,
+        "away": 1.64
       },
-      "bookmakerCount": 10
+      "bookmakerCount": 14
     },
     {
       "id": "24400b6372faf9f4996cd5704d707374",
@@ -1491,9 +1387,9 @@
       "away": "Leeds United",
       "kickoff": "2026-10-31T15:00:00Z",
       "odds": {
-        "home": 2.28,
-        "draw": 3.63,
-        "away": 3.35
+        "home": 2.24,
+        "draw": 3.6,
+        "away": 3.52
       },
       "bookmakerCount": 18
     },
@@ -1518,7 +1414,7 @@
       "kickoff": "2026-10-31T15:00:00Z",
       "odds": {
         "home": 1.74,
-        "draw": 4.45,
+        "draw": 4.5,
         "away": 4.67
       },
       "bookmakerCount": 18
@@ -1532,7 +1428,7 @@
       "odds": {
         "home": 2.96,
         "draw": 3.55,
-        "away": 2.58
+        "away": 2.64
       },
       "bookmakerCount": 18
     },
@@ -1543,7 +1439,7 @@
       "away": "Ipswich Town",
       "kickoff": "2026-10-31T15:00:00Z",
       "odds": {
-        "home": 2.7,
+        "home": 2.69,
         "draw": 3.6,
         "away": 2.75
       },
@@ -1556,11 +1452,11 @@
       "away": "Celta Vigo",
       "kickoff": "2026-10-31T15:15:00Z",
       "odds": {
-        "home": 2.24,
-        "draw": 3.52,
-        "away": 3.52
+        "home": 2.32,
+        "draw": 3.51,
+        "away": 3.5
       },
-      "bookmakerCount": 11
+      "bookmakerCount": 15
     },
     {
       "id": "a547720e6b4661d6319c4f11dbdf8e1f",
@@ -1584,7 +1480,7 @@
       "odds": {
         "home": 1.68,
         "draw": 4.4,
-        "away": 5.45
+        "away": 5.4
       },
       "bookmakerCount": 18
     },
@@ -1596,10 +1492,10 @@
       "kickoff": "2026-10-31T17:30:00Z",
       "odds": {
         "home": 1.46,
-        "draw": 5.5,
-        "away": 7.4
+        "draw": 5.25,
+        "away": 7.5
       },
-      "bookmakerCount": 12
+      "bookmakerCount": 16
     },
     {
       "id": "bad7337b335a16859b1db6b8e6cf6ca5",
@@ -1610,7 +1506,7 @@
       "odds": {
         "home": 1.37,
         "draw": 6.33,
-        "away": 7.9
+        "away": 7.82
       },
       "bookmakerCount": 12
     },
@@ -1673,11 +1569,11 @@
       "away": "Alavés",
       "kickoff": "2026-10-31T20:00:00Z",
       "odds": {
-        "home": 1.16,
-        "draw": 9.3,
-        "away": 21.25
+        "home": 1.18,
+        "draw": 10.4,
+        "away": 24
       },
-      "bookmakerCount": 12
+      "bookmakerCount": 16
     },
     {
       "id": "ddcc9a51a2d7368e055d1abefacdb74e",
@@ -1686,11 +1582,11 @@
       "away": "Sevilla",
       "kickoff": "2026-11-01T13:00:00Z",
       "odds": {
-        "home": 2.9,
+        "home": 3,
         "draw": 3.12,
         "away": 2.86
       },
-      "bookmakerCount": 12
+      "bookmakerCount": 16
     },
     {
       "id": "448a1083448ea9dff55bfebf15ff20b4",
@@ -1701,7 +1597,7 @@
       "odds": {
         "home": 1.87,
         "draw": 4.16,
-        "away": 4.5
+        "away": 4.4
       },
       "bookmakerCount": 17
     },
@@ -1726,10 +1622,10 @@
       "kickoff": "2026-11-01T15:15:00Z",
       "odds": {
         "home": 9.9,
-        "draw": 7.08,
+        "draw": 7,
         "away": 1.3
       },
-      "bookmakerCount": 12
+      "bookmakerCount": 16
     },
     {
       "id": "cf3a2e2b4a4e9815d1d0be8dcef916da",
@@ -1752,8 +1648,8 @@
       "kickoff": "2026-11-01T16:30:00Z",
       "odds": {
         "home": 3.33,
-        "draw": 3.8,
-        "away": 2.3
+        "draw": 3.85,
+        "away": 2.28
       },
       "bookmakerCount": 18
     },
@@ -1764,9 +1660,9 @@
       "away": "Hamburger SV",
       "kickoff": "2026-11-01T16:30:00Z",
       "odds": {
-        "home": 1.68,
-        "draw": 4.72,
-        "away": 4.83
+        "home": 1.72,
+        "draw": 4.61,
+        "away": 4.61
       },
       "bookmakerCount": 12
     },
@@ -1781,7 +1677,7 @@
         "draw": 3.52,
         "away": 2.96
       },
-      "bookmakerCount": 12
+      "bookmakerCount": 16
     },
     {
       "id": "df1e1589c51bbcac432125567d1f7c58",
@@ -1803,11 +1699,11 @@
       "away": "Real Sociedad",
       "kickoff": "2026-11-01T20:00:00Z",
       "odds": {
-        "home": 2.12,
-        "draw": 3.76,
-        "away": 3.98
+        "home": 2.08,
+        "draw": 3.74,
+        "away": 3.85
       },
-      "bookmakerCount": 12
+      "bookmakerCount": 16
     },
     {
       "id": "0f552d9c6990c69474f50ff2fb54e9a3",
@@ -1816,7 +1712,7 @@
       "away": "Everton",
       "kickoff": "2026-11-02T20:00:00Z",
       "odds": {
-        "home": 2.28,
+        "home": 2.34,
         "draw": 3.78,
         "away": 3.25
       },
@@ -1829,11 +1725,37 @@
       "away": "CA Osasuna",
       "kickoff": "2026-11-02T20:00:00Z",
       "odds": {
-        "home": 2.34,
+        "home": 2.35,
         "draw": 3.41,
         "away": 3.39
       },
       "bookmakerCount": 9
+    },
+    {
+      "id": "f43ef699c987e112e115f7035114854e",
+      "league": "UEFA Champions League",
+      "home": "AEK Athens",
+      "away": "Real Madrid",
+      "kickoff": "2026-11-04T17:45:00Z",
+      "odds": {
+        "home": 8.2,
+        "draw": 5.55,
+        "away": 1.41
+      },
+      "bookmakerCount": 7
+    },
+    {
+      "id": "ba82ee37f64a66a30d85f8b90082ec2f",
+      "league": "UEFA Champions League",
+      "home": "Porto",
+      "away": "Napoli",
+      "kickoff": "2026-11-04T20:00:00Z",
+      "odds": {
+        "home": 2.07,
+        "draw": 3.88,
+        "away": 3.65
+      },
+      "bookmakerCount": 7
     }
   ]
 }
